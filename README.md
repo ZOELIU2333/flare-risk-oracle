@@ -17,9 +17,9 @@ FXRP or other interoperable assets as collateral.
   <a href="https://coston2-explorer.flare.network/tx/0xe1aa6bf6d89a14422ce60af8646f8943676bcbc6de5c650a62ff3ea3268e69a7"><img alt="FDC proof verified" src="docs/img/status-proof.svg" width="170"></a>
 </p>
 
-### [Live demo](https://flare-risk-oracle.onrender.com/) · [97-second judge film](https://github.com/ZOELIU2333/flare-risk-oracle/releases/tag/video-v1.0.0) · [On-chain proof](#on-chain-proof)
+### [Launch live app →](https://flare-risk-oracle.onrender.com/) · [Demo video (98s) →](https://github.com/ZOELIU2333/flare-risk-oracle/releases/tag/video-v1.0.0) · [Verify on-chain proof →](#on-chain-proof)
 
-<sub>[Watch on GitHub Release](https://github.com/ZOELIU2333/flare-risk-oracle/releases/tag/video-v1.0.0) · [Direct 1080p MP4](https://github.com/ZOELIU2333/flare-risk-oracle/releases/download/video-v1.0.0/RiskOracle-Flare-Summer-Signal.mp4)</sub>
+<sub>Hosted app: <a href="https://flare-risk-oracle.onrender.com/">flare-risk-oracle.onrender.com</a> · <a href="https://github.com/ZOELIU2333/flare-risk-oracle/releases/download/video-v1.0.0/RiskOracle-Flare-Summer-Signal.mp4">Download 1080p MP4</a> · No wallet or sign-in required</sub>
 
 <sub>Flare Summer Signal · Bounty 1: Interoperable Asset Products · Built on Coston2</sub>
 
@@ -63,7 +63,7 @@ advantage: understanding new information before it is fully priced in.
 
 No wallet, API key, or local setup is required for evaluation.
 
-Prefer a guided tour? **[Watch the 97-second judge film](https://github.com/ZOELIU2333/flare-risk-oracle/releases/tag/video-v1.0.0)** to see the unchanged FTSO price, four-model consensus, FDC proof, and protocol response as one continuous flow.
+Prefer a guided tour? **[Open the 98-second judge film release](https://github.com/ZOELIU2333/flare-risk-oracle/releases/tag/video-v1.0.0)** to see the unchanged FTSO price, four-model consensus, FDC proof, and protocol response as one continuous flow. The release provides the [1080p MP4](https://github.com/ZOELIU2333/flare-risk-oracle/releases/download/video-v1.0.0/RiskOracle-Flare-Summer-Signal.mp4) and its SHA-256 digest.
 
 ## Working product
 
