@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Risk Oracle — On-chain risk intelligence for Flare DeFi</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bg: '#000000', panel: '#0C0C0D', panel2: '#111112',
+          border: '#1F1F22', borderlit: '#2C2C30',
+          ink: '#F2F2F3', muted: '#8A8A90', faint: '#55555C',
+          green: '#3DE686',          // 点缀绿（TRAE 那种亮薄荷）
+          amber: '#E5B567', red: '#E5645D',
+        },
+        fontFamily: {
+          sans: ['-apple-system','BlinkMacSystemFont','SF Pro Display','Segoe UI','Helvetica Neue','sans-serif'],
+          mono: ['JetBrains Mono','SF Mono','monospace']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body { background:#000; }
+  .mono { font-family:'JetBrains Mono','SF Mono',monospace; }
+  .eyebrow { font-family:'JetBrains Mono',monospace; letter-spacing:.15em; text-transform:uppercase; font-size:11px; }
+  .card { background:#0C0C0D; border:1px solid #1F1F22; border-radius:12px; }
+  .card:hover { border-color:#2C2C30; }
+  /* section 底部分隔线：收在 1280px 居中容器内，自适应任意宽屏都不超出内容 */
+  .sec { position:relative; }
+  .sec::after { content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:calc(100% - 4rem); max-width:1216px; border-bottom:1px solid #1F1F22; }
+  ::selection { background:rgba(61,230,134,.2); }
+  .bar { transition:width .6s cubic-bezier(.4,0,.2,1); }
+</style>
+</head>
+<body class="font-sans text-ink antialiased">
+
+<!-- 顶栏 -->
+<header class="sticky top-0 z-50 border-b border-border bg-bg/90 backdrop-blur">
+  <div class="max-w-6xl mx-auto px-8 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <span class="font-bold tracking-tight text-lg">RISK<span class="text-green">ORACLE</span></span>
+    </div>
+    <nav class="hidden md:flex items-center gap-8 text-sm text-muted">
+      <a href="#dashboard" class="hover:text-ink transition">Live Risk</a>
+      <a href="#onchain" class="hover:text-ink transition">On-chain</a>
+      <a href="#ecosystem" class="hover:text-ink transition">Ecosystem</a>
+      <a href="#flow" class="hover:text-ink transition">Architecture</a>
+    </nav>
+    <div class="flex items-center gap-2 text-xs text-muted mono">
+      <span class="w-1.5 h-1.5 rounded-full bg-green"></span>
+      <span>live · Coston2</span>
+    </div>
+  </div>
+</header>
+
+
+<!-- ① HERO -->
+
+<section class="sec relative overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 70% 50% at 50% 0%, rgba(61,230,134,0.05), transparent 65%)"></div>
+  <div class="max-w-7xl mx-auto px-8 pt-24 pb-0 text-center relative">
+    <div class="eyebrow text-muted mb-8">AI-Powered Risk Layer · Built on Flare</div>
+    <h1 class="text-6xl md:text-7xl font-bold tracking-[-0.03em] leading-[1.02]">
+      Risk intelligence that<br>reads what price can't.
+    </h1>
+    <p class="text-muted mt-8 max-w-xl mx-auto leading-relaxed text-[15px]">
+      Multi-dimensional AI risk scoring for Flare DeFi collateral — delivered on-chain via FDC, consumed by any protocol in one line.
+    </p>
+    <div class="flex items-center justify-center gap-3 mt-10 mb-20">
+      <a href="#dashboard" class="px-6 py-3 rounded-lg bg-green text-bg font-semibold text-sm hover:bg-green/90 transition">View live risk</a>
+      <a href="#dashboard" class="px-6 py-3 rounded-lg border border-borderlit text-sm hover:border-muted transition">Why AI →</a>
+    </div>
+  </div>
+  <!-- 跨宽实时指标条：边框画在 padding 内层，与上下内容严格对齐 -->
+  <div class="max-w-7xl mx-auto px-8 relative">
+    <div class="border-t border-border"></div>
+    <div class="grid grid-cols-2 md:grid-cols-4">
+      <div class="py-7 pr-6 text-left border-r border-border">
+        <div class="eyebrow text-faint mb-2">Assets Monitored</div>
+        <div class="text-2xl font-bold mono">3</div>
+        <div class="text-xs text-green mono mt-1">XRP · BTC · ETH</div>
+      </div>
+      <div class="py-7 px-6 text-left border-r border-border">
+        <div class="eyebrow text-faint mb-2">Highest Risk</div>
+        <div class="text-2xl font-bold mono"><span id="ovTopAsset" class="text-muted">—</span> <span id="ovTopScore" class="text-red">—</span></div>
+        <div id="ovTopLabel" class="text-xs text-muted mono mt-1">across assets</div>
+      </div>
+      <div class="py-7 px-6 text-left border-r border-border">
+        <div class="eyebrow text-faint mb-2">AI Models</div>
+        <div class="text-2xl font-bold mono">2</div>
+        <div class="text-xs text-muted mono mt-1">Kimi · DeepSeek</div>
+      </div>
+      <div class="py-7 pl-6 text-left">
+        <div class="eyebrow text-faint mb-2">On-chain</div>
+        <div class="text-2xl font-bold mono">FDC</div>
+        <div class="text-xs text-muted mono mt-1">auto-attested · Coston2</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 架构说明(后置) -->
+<!-- ② 数据流架构 -->
+<section id="flow" class="sec">
+  <div class="max-w-6xl mx-auto px-8 py-20">
+    <div class="eyebrow text-green mb-4">[ How it works ]</div>
+    <h2 class="text-3xl font-bold tracking-tight mb-12">From real-world signal to on-chain protection</h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div class="card p-6 transition">
+        <div class="mono text-xs text-green mb-4">[00]</div>
+        <div class="font-semibold mb-2">Flare FTSO</div>
+        <p class="text-sm text-muted leading-relaxed">Native oracle feeds XRP/USD price on-chain — free & decentralized.</p>
+      </div>
+      <div class="card p-6 transition">
+        <div class="mono text-xs text-green mb-4">[01]</div>
+        <div class="font-semibold mb-2">AI Engine</div>
+        <p class="text-sm text-muted leading-relaxed">Kimi scores multi-dimensional risk and reads unstructured news.</p>
+      </div>
+      <div class="card p-6 transition">
+        <div class="mono text-xs text-green mb-4">[02]</div>
+        <div class="font-semibold mb-2">Flare FDC</div>
+        <p class="text-sm text-muted leading-relaxed">Risk snapshot delivered on-chain, cryptographically attested.</p>
+      </div>
+      <div class="card p-6 transition">
+        <div class="mono text-xs text-green mb-4">[03]</div>
+        <div class="font-semibold mb-2">Any Protocol</div>
+        <p class="text-sm text-muted leading-relaxed">Lending, insurance & more read the signal via one interface.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="dashboard" class="sec">
+  <div class="max-w-6xl mx-auto px-8 py-20">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <div class="eyebrow text-green mb-4">[ Live dashboard ]</div>
+        <h2 class="text-3xl font-bold tracking-tight">Multi-dimensional AI risk analysis</h2>
+      </div>
+      <button id="refreshBtn" class="px-4 py-2 rounded-lg border border-borderlit text-sm text-muted hover:border-green hover:text-green transition mono">↻ refresh</button>
+    </div>
+    <!-- 资产切换器 -->
+    <div class="flex items-center gap-2 mb-10">
+      <button class="asset-tab px-5 py-2.5 rounded-lg border text-sm font-medium transition" data-asset="XRP">XRP<span class="text-faint ml-2 mono text-xs">FXRP</span></button>
+      <button class="asset-tab px-5 py-2.5 rounded-lg border text-sm font-medium transition" data-asset="BTC">BTC<span class="text-faint ml-2 mono text-xs">FBTC</span></button>
+      <button class="asset-tab px-5 py-2.5 rounded-lg border text-sm font-medium transition" data-asset="ETH">ETH<span class="text-faint ml-2 mono text-xs">FETH</span></button>
+    </div>
+    <!-- 多 AI 共识（全宽焦点区块，核心卖点前置突出）-->
+    <div class="card p-8 mb-5">
+      <div class="flex items-center justify-between mb-6">
+        <div class="eyebrow text-green">Multi-AI Consensus · <span id="agreement" class="text-green">—</span> agreement</div>
+        <span id="divergenceLabel" class="mono text-xs text-muted px-3 py-1 rounded-md border border-border">—</span>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- 左：各 AI 独立打分卡片 -->
+        <div id="aiSources" class="grid grid-cols-1 sm:grid-cols-2 gap-3 content-start"></div>
+        <!-- 右：共识如何达成（可视化对比条）-->
+        <div class="lg:border-l lg:border-border lg:pl-8">
+          <div class="text-xs text-faint mb-4">How consensus is reached</div>
+          <div id="consensusBars" class="space-y-4"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- News Shock Test：AI 读突发新闻抢先风控（跟当前选中币走）-->
+    <div class="card p-8 mb-5">
+      <div class="eyebrow text-green mb-3">[ News shock test — the killer difference ]</div>
+      <h3 class="text-2xl font-bold tracking-tight mb-2">AI reads the news before price reacts</h3>
+      <p class="text-muted mb-6 max-w-2xl text-sm">Same moment, price hasn't moved — but a headline just dropped. A price-only oracle sees nothing. Type any headline and watch <span id="newsAssetLabel" class="text-green">XRP</span>'s AI risk react live.</p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <div>
+          <div class="bg-panel2 border border-border rounded-lg p-4 mb-4">
+            <div class="eyebrow text-muted mb-3">Incoming headline</div>
+            <textarea id="newsInput" rows="3" class="w-full bg-transparent border border-border rounded-lg p-3 text-sm text-ink resize-none focus:border-green focus:outline-none" placeholder="Type a breaking news headline…">US SEC announces formal investigation into Ripple; exchanges consider suspending XRP trading.</textarea>
+            <button id="analyzeNewsBtn" class="mt-3 px-5 py-2.5 rounded-lg bg-green text-bg font-semibold text-sm hover:bg-green/90 transition">Analyze with AI</button>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-panel2 border border-border rounded-lg p-5">
+            <div class="flex items-center gap-2 mb-4"><span class="w-2 h-2 rounded-full bg-muted"></span><span class="text-sm font-medium text-muted">Legacy Oracle</span></div>
+            <div class="text-4xl font-bold mono text-muted mb-2">low</div>
+            <p class="text-xs text-muted leading-relaxed">Price hasn't dropped → no risk. Reacts only after the crash — too late.</p>
+          </div>
+          <div class="bg-panel2 rounded-lg p-5" style="border:1px solid rgba(229,100,93,.35)">
+            <div class="flex items-center gap-2 mb-4"><span class="w-2 h-2 rounded-full bg-red animate-pulse"></span><span class="text-sm font-medium">AI Risk Oracle</span></div>
+            <div id="newsScore" class="text-4xl font-bold mono text-red mb-2">—</div>
+            <p id="newsReason" class="text-xs text-muted leading-relaxed">Click "Analyze with AI" — multiple models read the headline and judge risk in real time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-12 gap-5">
+      <div class="col-span-12 lg:col-span-7 card p-8 flex flex-col">
+        <div class="eyebrow text-muted mb-8">Risk Dimensions</div>
+        <!-- 三个环形图 -->
+        <div class="grid grid-cols-3 gap-4">
+          <div class="flex flex-col items-center">
+            <svg viewBox="0 0 120 120" class="w-full max-w-[130px]">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#1F1F22" stroke-width="10"/>
+              <circle id="ringMarket" cx="60" cy="60" r="50" fill="none" stroke="#3DE686" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" transform="rotate(-90 60 60)" style="transition:stroke-dashoffset .8s cubic-bezier(.4,0,.2,1)"/>
+              <text id="ringMarketVal" x="60" y="60" text-anchor="middle" dominant-baseline="central" class="mono" font-size="28" font-weight="700" fill="#F2F2F3">—</text>
+            </svg>
+            <div class="text-sm text-muted mt-3">Market</div>
+          </div>
+          <div class="flex flex-col items-center">
+            <svg viewBox="0 0 120 120" class="w-full max-w-[130px]">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#1F1F22" stroke-width="10"/>
+              <circle id="ringVol" cx="60" cy="60" r="50" fill="none" stroke="#E5B567" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" transform="rotate(-90 60 60)" style="transition:stroke-dashoffset .8s cubic-bezier(.4,0,.2,1)"/>
+              <text id="ringVolVal" x="60" y="60" text-anchor="middle" dominant-baseline="central" class="mono" font-size="28" font-weight="700" fill="#F2F2F3">—</text>
+            </svg>
+            <div class="text-sm text-muted mt-3">Volatility</div>
+          </div>
+          <div class="flex flex-col items-center">
+            <svg viewBox="0 0 120 120" class="w-full max-w-[130px]">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#1F1F22" stroke-width="10"/>
+              <circle id="ringLiq" cx="60" cy="60" r="50" fill="none" stroke="#3DE686" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" transform="rotate(-90 60 60)" style="transition:stroke-dashoffset .8s cubic-bezier(.4,0,.2,1)"/>
+              <text id="ringLiqVal" x="60" y="60" text-anchor="middle" dominant-baseline="central" class="mono" font-size="28" font-weight="700" fill="#F2F2F3">—</text>
+            </svg>
+            <div class="text-sm text-muted mt-3">Liquidity</div>
+          </div>
+        </div>
+        <div class="mt-auto pt-8 border-t border-border">
+          <div class="eyebrow text-muted mb-3">AI Reasoning · Consensus</div>
+          <p id="aiReason" class="text-base text-ink/90 leading-relaxed">Loading live analysis…</p>
+        </div>
+      </div>
+      <div class="col-span-12 lg:col-span-5 space-y-5">
+        <div class="card p-7">
+          <div class="flex items-center justify-between mb-3">
+            <span class="eyebrow text-muted">Composite Score</span>
+            <span class="mono text-xs text-muted">XRP/USD · <span id="xrpPrice">—</span></span>
+          </div>
+          <div class="flex items-baseline gap-2"><span id="scoreNum" class="text-7xl font-bold mono tabular-nums text-green">—</span><span class="text-muted mono">/100</span></div>
+          <div id="scoreLabel" class="mt-1 text-green text-sm font-medium">—</div>
+          <div class="mt-4 h-1 bg-border rounded-full overflow-hidden"><div id="scoreBar" class="h-full bg-green rounded-full bar" style="width:0%"></div></div>
+          <div id="updatedAt" class="mt-3 text-xs text-faint mono">—</div>
+        </div>
+        <!-- 关联资产（跨资产风险传染上下文）-->
+        <div class="card p-7">
+          <div class="eyebrow text-muted mb-4">Market Context · cross-asset</div>
+          <div id="ctxGrid" class="grid grid-cols-3 gap-3">
+            <!-- 由 JS 动态填充：主资产 + 两个关联资产 -->
+          </div>
+          <div id="ctxNote" class="mt-4 pt-3 border-t border-border text-xs text-muted leading-relaxed">AI factors broad crypto-market state into collateral risk — contagion a rule engine can't model.</div>
+        </div>
+      </div>
+    </div>
+    <!-- 大号风险趋势图（可交互，悬浮看各AI结论）-->
+    <div class="card p-8 mt-5">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <div class="eyebrow text-muted mb-1">Risk Score Timeline</div>
+          <div class="text-sm text-muted">Multi-AI consensus score over time · hover for per-model breakdown</div>
+        </div>
+        <span id="trendLabel" class="mono text-sm px-3 py-1 rounded-md border border-border">—</span>
+      </div>
+      <div class="relative">
+        <svg id="trendChart" viewBox="0 0 900 260" class="w-full" style="height:260px" preserveAspectRatio="none"></svg>
+        <!-- tooltip -->
+        <div id="trendTip" class="absolute hidden pointer-events-none bg-panel2 border border-borderlit rounded-lg p-3 text-xs shadow-xl z-20" style="min-width:180px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 链上合约支撑（独立全宽突出区块）-->
+<section id="onchain" class="sec">
+  <div class="max-w-6xl mx-auto px-8 py-20">
+    <div class="flex items-center justify-between mb-4">
+      <div class="eyebrow text-green">[ On-chain proof ]</div>
+      <span class="flex items-center gap-1.5 text-sm text-green"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>verified on Coston2</span>
+    </div>
+    <h2 class="text-3xl font-bold tracking-tight mb-3">Every risk signal, provable on-chain</h2>
+    <p class="text-muted mb-10 max-w-2xl">Risk scores aren't stored on our server — they're written to a Flare smart contract as immutable events, auto-pushed every cycle and independently verifiable by anyone.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <!-- 合约 -->
+      <div class="card p-7">
+        <div class="eyebrow text-muted mb-4">RiskOracle Contract</div>
+        <a href="https://coston2-explorer.flare.network/address/0x29D2567bbD5979426fadAdB8991C10dE267f4304" target="_blank" class="mono text-lg text-ink hover:text-green transition break-all flex items-center gap-2 group">0x29D2…4304 <span class="text-green opacity-60 group-hover:opacity-100 text-sm">↗</span></a>
+        <div class="mt-5 space-y-2.5 text-sm border-t border-border pt-5">
+          <div class="flex justify-between"><span class="text-faint">Price feed</span><span class="text-muted">Flare FTSO</span></div>
+          <div class="flex justify-between"><span class="text-faint">Attestation</span><span class="text-muted">Flare FDC · Web2Json</span></div>
+          <div class="flex justify-between"><span class="text-faint">Network</span><span class="text-muted">Coston2 Testnet</span></div>
+        </div>
+      </div>
+      <!-- 最新上链 -->
+      <div class="card p-7">
+        <div class="eyebrow text-muted mb-4">Latest auto-push</div>
+        <div class="text-lg font-bold">Score written on-chain</div>
+        <div class="text-sm text-muted mt-1">every cycle, no human in the loop</div>
+        <div class="mt-5 border-t border-border pt-5">
+          <div class="text-xs text-faint mb-1.5">Transaction</div>
+          <a id="ocTx" href="#" target="_blank" class="mono text-sm text-muted hover:text-green transition break-all">—</a>
+        </div>
+      </div>
+      <!-- 链上历史 -->
+      <div class="card p-7">
+        <div class="eyebrow text-muted mb-4">Immutable history</div>
+        <div class="flex items-baseline gap-2"><span id="ocHistCount" class="text-4xl font-bold mono text-green">—</span><span class="text-muted text-sm">events on-chain</span></div>
+        <p class="text-sm text-muted mt-4 leading-relaxed border-t border-border pt-5">History is reconstructed from on-chain <span class="mono text-ink">RiskUpdated</span> events — tamper-proof, not from our database.</p>
+        <a href="https://coston2-explorer.flare.network/address/0x29D2567bbD5979426fadAdB8991C10dE267f4304" target="_blank" class="text-xs text-green hover:underline mt-3 inline-block">View all events ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ecosystem" class="sec">
+  <div class="max-w-6xl mx-auto px-8 py-20">
+    <div class="eyebrow text-green mb-4">[ Public infrastructure ]</div>
+    <h2 class="text-3xl font-bold tracking-tight mb-3">One oracle, every protocol</h2>
+    <p class="text-muted mb-12 max-w-xl">Two entirely different protocols consume the same AI risk signal through one <span class="mono text-ink">IRiskOracle</span> interface.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div class="card p-8">
+        <div class="flex items-center justify-between mb-7">
+          <span class="font-semibold">Lending Protocol</span>
+          <span class="mono text-xs text-muted">collateral ratio</span>
+        </div>
+        <div class="space-y-4 text-sm">
+          <div class="flex justify-between items-center"><span class="text-muted">Risk 25 · Low</span><span class="text-green mono">150% · open</span></div>
+          <div class="flex justify-between items-center"><span class="text-muted">Risk 70 · High</span><span class="text-amber mono">250% · tightened</span></div>
+          <div class="flex justify-between items-center"><span class="text-muted">Risk 95 · Critical</span><span class="text-red mono">suspended</span></div>
+        </div>
+      </div>
+      <div class="card p-8">
+        <div class="flex items-center justify-between mb-7">
+          <span class="font-semibold">Insurance Pool</span>
+          <span class="mono text-xs text-muted">premium rate</span>
+        </div>
+        <div class="space-y-4 text-sm">
+          <div class="flex justify-between items-center"><span class="text-muted">Risk 25 · Low</span><span class="text-green mono">325 · underwriting</span></div>
+          <div class="flex justify-between items-center"><span class="text-muted">Risk 70 · High</span><span class="text-amber mono">730 · repriced</span></div>
+          <div class="flex justify-between items-center"><span class="text-muted">Risk 95 · Critical</span><span class="text-red mono">declined</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Footer -->
+<footer>
+  <div class="max-w-6xl mx-auto px-8 py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+    <span class="text-sm text-muted">RISK<span class="text-green">ORACLE</span> · built on Flare</span>
+    <div class="flex items-center gap-5 text-xs mono text-faint">
+      <span>FDC</span><span>FTSO</span><span>FXRP</span><span>COSTON2</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 本地开发用 localhost:8078；线上(同源部署)用相对路径
+  const API = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
+    ? "http://localhost:8078"
+    : "";
+  let currentAsset = "XRP"; // 当前查看的资产
+
+  // 风险分 → 颜色语义（低绿/中琥珀/高红）
+  function riskColor(score) {
+    if (score >= 70) return "#E5645D";      // red
+    if (score >= 45) return "#E5B567";      // amber
+    return "#3DE686";                        // green
+  }
+  function riskLabel(score) {
+    if (score >= 70) return "HIGH RISK";
+    if (score >= 45) return "MODERATE RISK";
+    return "LOW RISK";
+  }
+  function fmtAgo(ts) {
+    if (!ts) return "—";
+    const s = Math.floor(Date.now()/1000) - ts;
+    if (s < 60) return `updated ${s}s ago`;
+    return `updated ${Math.floor(s/60)}m ago`;
+  }
+
+  // 画大号可交互风险趋势图：Y轴分数刻度 + X轴时间 + 悬浮显示各AI结论
+  function drawTrend(hist) {
+    const svg = document.getElementById("trendChart");
+    const tip = document.getElementById("trendTip");
+    if (!hist || hist.length === 0) { svg.innerHTML = ""; return; }
+    const data = hist.length === 1 ? [hist[0], hist[0]] : hist;
+    const n = data.length;
+
+    const W = 900, H = 260;
+    const padL = 44, padR = 20, padT = 20, padB = 34;
+    const x = (i) => padL + (i / (n - 1)) * (W - padL - padR);
+    const y = (v) => padT + (1 - v / 100) * (H - padT - padB);
+
+    // Y轴网格 + 刻度(0/25/50/75/100)
+    let grid = "";
+    [0, 25, 50, 75, 100].forEach((v) => {
+      const yy = y(v);
+      grid += `<line x1="${padL}" y1="${yy}" x2="${W - padR}" y2="${yy}" stroke="#1A231D" stroke-width="1"/>`;
+      grid += `<text x="${padL - 8}" y="${yy + 4}" text-anchor="end" fill="#4A5850" font-size="11" font-family="monospace">${v}</text>`;
+    });
+
+    // X轴时间标签（首、中、尾）
+    let xlabels = "";
+    const fmtT = (ts) => { const d = new Date(ts * 1000); return String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0"); };
+    [0, Math.floor((n-1)/2), n-1].forEach((i) => {
+      if (data[i].at) xlabels += `<text x="${x(i)}" y="${H - 10}" text-anchor="middle" fill="#4A5850" font-size="11" font-family="monospace">${fmtT(data[i].at)}</text>`;
+    });
+
+    const last = data[n - 1].score;
+    const c = riskColor(last);
+    const line = data.map((h, i) => `${i === 0 ? "M" : "L"}${x(i).toFixed(1)},${y(h.score).toFixed(1)}`).join(" ");
+    const area = line + ` L${x(n-1).toFixed(1)},${y(0)} L${x(0).toFixed(1)},${y(0)} Z`;
+
+    // 数据点圆（带 hover 区）
+    let dots = "";
+    data.forEach((h, i) => {
+      dots += `<circle cx="${x(i).toFixed(1)}" cy="${y(h.score).toFixed(1)}" r="4" fill="${riskColor(h.score)}"/>`;
+      dots += `<circle class="hotspot" data-i="${i}" cx="${x(i).toFixed(1)}" cy="${y(h.score).toFixed(1)}" r="14" fill="transparent" style="cursor:pointer"/>`;
+    });
+
+    svg.innerHTML = `
+      <defs><linearGradient id="tg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="${c}" stop-opacity="0.2"/>
+        <stop offset="100%" stop-color="${c}" stop-opacity="0"/>
+      </linearGradient></defs>
+      ${grid}${xlabels}
+      <path d="${area}" fill="url(#tg)"/>
+      <path d="${line}" fill="none" stroke="${c}" stroke-width="2"/>
+      ${dots}`;
+
+    // 悬浮 tooltip
+    svg.querySelectorAll(".hotspot").forEach((el) => {
+      el.addEventListener("mouseenter", (e) => {
+        const h = data[+el.dataset.i];
+        const srcHtml = (h.sources || []).map(s =>
+          `<div class="flex justify-between gap-4"><span class="text-muted">${s.provider}</span><span class="mono" style="color:${riskColor(s.score)}">${s.score}</span></div>`
+        ).join("");
+        tip.innerHTML = `
+          <div class="mono text-faint mb-1">${h.at ? new Date(h.at*1000).toLocaleTimeString() : ""}</div>
+          <div class="flex justify-between gap-4 mb-2"><span class="font-medium">Consensus</span><span class="mono font-bold" style="color:${riskColor(h.score)}">${h.score}</span></div>
+          ${srcHtml}`;
+        const rect = svg.getBoundingClientRect();
+        const px = (x(+el.dataset.i) / W) * rect.width;
+        tip.style.left = Math.min(Math.max(px - 90, 0), rect.width - 190) + "px";
+        tip.style.top = "10px";
+        tip.classList.remove("hidden");
+      });
+      el.addEventListener("mouseleave", () => tip.classList.add("hidden"));
+    });
+
+    // 趋势标签
+    const label = document.getElementById("trendLabel");
+    if (data.length >= 2) {
+      const delta = data[n-1].score - data[0].score;
+      label.textContent = delta > 3 ? `▲ rising +${delta}` : delta < -3 ? `▼ falling ${delta}` : "→ stable";
+      label.style.color = delta > 3 ? "#E5645D" : delta < -3 ? "#3DE686" : "#8A8A90";
+    } else { label.textContent = "1 reading"; }
+  }
+
+  async function loadRisk() {
+    try {
+      const r = await fetch(`${API}/api/risk?asset=${currentAsset}`).then(x => x.json());
+      if (r.status !== "ok") { setTimeout(loadRisk, 4000); return; } // 后台还在初始化，稍后重试
+
+      const c = riskColor(r.score), label = riskLabel(r.score);
+      // 综合分
+      const sn = document.getElementById("scoreNum"); sn.textContent = r.score; sn.style.color = c;
+      const sl = document.getElementById("scoreLabel"); sl.textContent = label; sl.style.color = c;
+      const sb = document.getElementById("scoreBar"); sb.style.width = r.score + "%"; sb.style.background = c;
+      document.getElementById("xrpPrice").textContent = "$" + Number(r.price).toFixed(5);
+      // 关联资产（跨资产风险传染上下文）
+      // 关联资产（跨资产风险传染上下文）— 动态：主资产 + 两个关联资产
+      const fmtPrice = (a, v) => a === "XRP" ? "$" + Number(v).toFixed(4) : "$" + Math.round(v).toLocaleString();
+      const cells = [`<div><div class="text-xs text-green mb-1">${currentAsset} · primary</div><div class="mono text-sm font-semibold">${fmtPrice(currentAsset, r.price)}</div></div>`];
+      if (r.market) {
+        for (const [a, v] of Object.entries(r.market)) {
+          cells.push(`<div><div class="text-xs text-faint mb-1">${a}</div><div class="mono text-sm font-semibold text-muted">${fmtPrice(a, v)}</div></div>`);
+        }
+      }
+      document.getElementById("ctxGrid").innerHTML = cells.join("");
+      document.getElementById("updatedAt").textContent = fmtAgo(r.updatedAt);
+      document.getElementById("aiReason").textContent = r.reason;
+      // 最新自动上链 tx
+      if (r.onchain && r.onchain.txHash) {
+        const tx = r.onchain.txHash;
+        const a = document.getElementById("ocTx");
+        a.href = "https://coston2-explorer.flare.network/tx/" + tx;
+        a.textContent = tx.slice(0, 10) + "…" + tx.slice(-8) + " ↗";
+      }
+      // 风险趋势图（传完整历史：含时间和各AI结论）
+      drawTrend(r.history || [{ score: r.score, at: r.updatedAt, sources: r.sources }]);
+      // 多维（环形图）
+      const dims = r.dimensions || {};
+      const C = 314; // 圆周长 2πr, r=50
+      const setRing = (ring, val, v) => {
+        const s = Number.isFinite(v) ? v : 0;
+        const rc = document.getElementById(ring);
+        rc.style.strokeDashoffset = C * (1 - s / 100);
+        rc.setAttribute("stroke", riskColor(s));
+        const t = document.getElementById(val);
+        t.textContent = Number.isFinite(v) ? v : "—";
+        t.setAttribute("fill", riskColor(s));
+      };
+      setRing("ringMarket", "ringMarketVal", dims.marketRisk);
+      setRing("ringVol", "ringVolVal", dims.volatilityRisk);
+      setRing("ringLiq", "ringLiqVal", dims.liquidityRisk);
+      // 共识面板
+      document.getElementById("agreement").textContent = r.agreement || "—";
+      const box = document.getElementById("aiSources");
+      const modelBadge = (m) => {
+        if (/k3/i.test(m)) return '<span class="text-[10px] mono px-1.5 py-0.5 rounded bg-green/15 text-green ml-2">flagship</span>';
+        if (/flash/i.test(m)) return '<span class="text-[10px] mono px-1.5 py-0.5 rounded bg-borderlit text-muted ml-2">fast</span>';
+        return "";
+      };
+      box.innerHTML = (r.sources||[]).map(s => `
+        <div class="bg-panel2 border border-border rounded-lg p-4">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-sm font-medium flex items-center">${s.provider}${modelBadge(s.model)}</span>
+            <span class="mono font-bold" style="color:${riskColor(s.score)}">${s.score}</span>
+          </div>
+          <div class="text-xs text-faint mono mb-2">${s.model}</div>
+          <div class="text-xs text-muted leading-relaxed">${s.reason}</div>
+        </div>`).join("");
+
+      // 共识对比条：各 AI 分数条 + 共识落点 + 分歧度
+      const srcs = r.sources || [];
+      const barsBox = document.getElementById("consensusBars");
+      barsBox.innerHTML = srcs.map(s => `
+        <div>
+          <div class="flex justify-between text-xs mb-1"><span class="text-muted">${s.provider}</span><span class="mono" style="color:${riskColor(s.score)}">${s.score}</span></div>
+          <div class="h-1.5 bg-border rounded-full overflow-hidden"><div class="h-full rounded-full" style="width:${s.score}%;background:${riskColor(s.score)}"></div></div>
+        </div>`).join("") + `
+        <div class="pt-1">
+          <div class="flex justify-between text-xs mb-1"><span class="text-green font-medium">Consensus</span><span class="mono font-bold" style="color:${riskColor(r.score)}">${r.score}</span></div>
+          <div class="relative h-1.5 bg-border rounded-full overflow-hidden"><div class="h-full rounded-full" style="width:${r.score}%;background:${riskColor(r.score)}"></div></div>
+        </div>`;
+      const dl = document.getElementById("divergenceLabel");
+      if (dl) dl.textContent = "spread " + (r.divergence ?? "—");
+    } catch (e) {
+      document.getElementById("aiReason").textContent = "⚠️ Backend not reachable. Start it with: node server/index.js";
+    }
+  }
+
+  // refresh 按钮：触发后台刷新，几秒后重新拉
+  document.getElementById("refreshBtn")?.addEventListener("click", async () => {
+    const btn = document.getElementById("refreshBtn");
+    btn.textContent = "↻ refreshing…";
+    try { await fetch(`${API}/api/risk/refresh`, {method:"POST"}); } catch {}
+    setTimeout(() => { loadRisk(); btn.textContent = "↻ refresh"; }, 6000);
+  });
+
+  // 杀手锏：新闻实时分析
+  document.getElementById("analyzeNewsBtn")?.addEventListener("click", async () => {
+    const btn = document.getElementById("analyzeNewsBtn");
+    const news = document.getElementById("newsInput").value.trim();
+    if (!news) return;
+    btn.textContent = "Analyzing…"; btn.disabled = true;
+    document.getElementById("newsScore").textContent = "…";
+    document.getElementById("newsReason").textContent = "Multiple AI models are reading the headline…";
+    try {
+      const r = await fetch(`${API}/api/news`, {
+        method:"POST", headers:{"Content-Type":"application/json"},
+        body: JSON.stringify({ news, asset: currentAsset })
+      }).then(x => x.json());
+      const ns = document.getElementById("newsScore");
+      ns.textContent = r.score; ns.style.color = riskColor(r.score);
+      const srcTxt = (r.sources||[]).map(s => `${s.provider}: ${s.score}`).join(" · ");
+      document.getElementById("newsReason").innerHTML = `${r.reason}<br><span class="text-faint">${srcTxt} · ${r.agreement||""} agreement</span>`;
+    } catch (e) {
+      document.getElementById("newsReason").textContent = "⚠️ Backend not reachable.";
+    } finally {
+      btn.textContent = "Analyze with AI"; btn.disabled = false;
+    }
+  });
+
+  // 加载链上历史条数（从合约事件日志重建）
+  async function loadOnchainHistory() {
+    try {
+      const r = await fetch(`${API}/api/onchain-history`).then(x => x.json());
+      const el = document.getElementById("ocHistCount");
+      if (el && r.history) el.textContent = r.history.length;
+    } catch {}
+  }
+
+  // 全局概览：找出风险最高的资产（Hero 顶部总结用，不随切币变）
+  async function loadOverview() {
+    try {
+      const ov = await fetch(`${API}/api/overview`).then(x => x.json());
+      const valid = ov.filter(a => a.status === "ok" && Number.isFinite(a.score));
+      if (!valid.length) { setTimeout(loadOverview, 5000); return; }
+      const top = valid.reduce((a, b) => b.score > a.score ? b : a);
+      document.getElementById("ovTopAsset").textContent = top.asset;
+      const ts = document.getElementById("ovTopScore"); ts.textContent = top.score; ts.style.color = riskColor(top.score);
+      document.getElementById("ovTopLabel").textContent = riskLabel(top.score).toLowerCase() + " · across assets";
+    } catch {}
+  }
+
+  // 资产切换器
+  function updateTabStyles() {
+    document.querySelectorAll(".asset-tab").forEach((t) => {
+      const active = t.dataset.asset === currentAsset;
+      t.style.borderColor = active ? "#3DE686" : "#2C2C30";
+      t.style.color = active ? "#3DE686" : "#8A8A90";
+      t.style.background = active ? "rgba(61,230,134,0.08)" : "transparent";
+    });
+  }
+  document.querySelectorAll(".asset-tab").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      currentAsset = tab.dataset.asset;
+      updateTabStyles();
+      // 切换资产：清空显示 + 重新加载
+      document.getElementById("scoreNum").textContent = "…";
+      // 新闻测试跟随当前币：更新标签 + 重置结果
+      const nl = document.getElementById("newsAssetLabel"); if (nl) nl.textContent = currentAsset;
+      const nsr = document.getElementById("newsScore"); if (nsr) { nsr.textContent = "—"; nsr.style.color = "#E5645D"; }
+      const nrn = document.getElementById("newsReason"); if (nrn) nrn.innerHTML = 'Click "Analyze with AI" — multiple models read the headline and judge risk in real time.';
+      loadRisk();
+    });
+  });
+  updateTabStyles();
+
+  loadRisk();
+  loadOnchainHistory();
+  loadOverview();
+</script>
+</body>
+</html>

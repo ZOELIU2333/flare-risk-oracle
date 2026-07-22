@@ -1,0 +1,45 @@
+<svg width="1000" height="300" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <rect width="1000" height="300" fill="#000000"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6" fill="none" stroke="#3DE686" stroke-width="1.5"/>
+    </marker>
+  </defs>
+
+  <!-- 连接箭头 -->
+  <line x1="228" y1="150" x2="262" y2="150" stroke="#3DE686" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="478" y1="150" x2="512" y2="150" stroke="#3DE686" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="728" y1="150" x2="762" y2="150" stroke="#3DE686" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ① SOURCE -->
+  <rect x="20" y="80" width="210" height="140" rx="12" fill="#0C0C0D" stroke="#1F1F22"/>
+  <text x="44" y="116" fill="#3DE686" font-size="12" font-family="'JetBrains Mono', monospace" letter-spacing="1">01 · SOURCE</text>
+  <text x="44" y="150" fill="#F2F2F3" font-size="19" font-weight="700">Flare FTSO</text>
+  <text x="44" y="176" fill="#8A8A90" font-size="13">Native price feeds</text>
+  <text x="44" y="196" fill="#8A8A90" font-size="13">XRP · BTC · ETH</text>
+
+  <!-- ② ANALYZE -->
+  <rect x="270" y="80" width="210" height="140" rx="12" fill="#0C0C0D" stroke="#1F1F22"/>
+  <text x="294" y="116" fill="#3DE686" font-size="12" font-family="'JetBrains Mono', monospace" letter-spacing="1">02 · ANALYZE</text>
+  <text x="294" y="150" fill="#F2F2F3" font-size="19" font-weight="700">Multi-AI</text>
+  <text x="294" y="176" fill="#8A8A90" font-size="13">Kimi K3 + DeepSeek</text>
+  <text x="294" y="196" fill="#8A8A90" font-size="13">consensus + news</text>
+
+  <!-- ③ VERIFY -->
+  <rect x="520" y="80" width="210" height="140" rx="12" fill="#0C0C0D" stroke="#1F1F22"/>
+  <text x="544" y="116" fill="#3DE686" font-size="12" font-family="'JetBrains Mono', monospace" letter-spacing="1">03 · VERIFY</text>
+  <text x="544" y="150" fill="#F2F2F3" font-size="19" font-weight="700">Flare FDC</text>
+  <text x="544" y="176" fill="#8A8A90" font-size="13">on-chain attestation</text>
+  <text x="544" y="196" fill="#8A8A90" font-size="13">immutable events</text>
+
+  <!-- ④ CONSUME -->
+  <rect x="770" y="80" width="210" height="140" rx="12" fill="#0C0C0D" stroke="#1F1F22"/>
+  <text x="794" y="116" fill="#3DE686" font-size="12" font-family="'JetBrains Mono', monospace" letter-spacing="1">04 · CONSUME</text>
+  <text x="794" y="150" fill="#F2F2F3" font-size="19" font-weight="700">Any Protocol</text>
+  <text x="794" y="176" fill="#8A8A90" font-size="13">Lending · Insurance</text>
+  <text x="794" y="196" fill="#8A8A90" font-size="13">via IRiskOracle</text>
+
+  <!-- 底部主线 -->
+  <text x="500" y="270" text-anchor="middle" fill="#55555C" font-size="13" font-family="'JetBrains Mono', monospace">real-world signal  →  AI understanding  →  provable on-chain  →  consumed by DeFi</text>
+</svg>

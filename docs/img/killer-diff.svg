@@ -1,0 +1,30 @@
+<svg width="1000" height="360" viewBox="0 0 1000 360" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <rect width="1000" height="360" fill="#000000"/>
+
+  <!-- 场景标题 -->
+  <text x="500" y="42" text-anchor="middle" fill="#8A8A90" font-size="15" font-family="'JetBrains Mono', monospace" letter-spacing="2">SAME MOMENT · PRICE HASN'T MOVED · A HEADLINE JUST DROPPED</text>
+
+  <!-- 新闻条 -->
+  <rect x="150" y="66" width="700" height="46" rx="8" fill="#0C0C0D" stroke="#1F1F22"/>
+  <text x="500" y="94" text-anchor="middle" fill="#F2F2F3" font-size="14" font-style="italic">"SEC opens formal investigation into Ripple; exchanges may halt XRP."</text>
+
+  <!-- 左：传统 -->
+  <rect x="80" y="150" width="380" height="160" rx="12" fill="#0C0C0D" stroke="#1F1F22"/>
+  <circle cx="112" cy="184" r="4" fill="#8A8A90"/>
+  <text x="128" y="189" fill="#8A8A90" font-size="15" font-weight="600">Legacy Oracle</text>
+  <text x="112" y="250" fill="#8A8A90" font-size="52" font-weight="700" font-family="'JetBrains Mono', monospace">low</text>
+  <text x="112" y="286" fill="#55555C" font-size="13">Price hasn't dropped → sees no risk.</text>
+  <text x="112" y="304" fill="#55555C" font-size="13">Keeps lending. Reacts after the crash — too late.</text>
+
+  <!-- 右：AI -->
+  <rect x="540" y="150" width="380" height="160" rx="12" fill="#0C0C0D" stroke="#E5645D" stroke-opacity="0.4"/>
+  <circle cx="572" cy="184" r="4" fill="#E5645D"/>
+  <text x="588" y="189" fill="#F2F2F3" font-size="15" font-weight="600">RiskOracle (AI)</text>
+  <text x="572" y="250" fill="#E5645D" font-size="52" font-weight="700" font-family="'JetBrains Mono', monospace">95</text>
+  <text x="662" y="250" fill="#55555C" font-size="20" font-family="'JetBrains Mono', monospace">/100</text>
+  <text x="572" y="286" fill="#C7CCD1" font-size="13">Reads the headline → flags critical risk instantly.</text>
+  <text x="572" y="304" fill="#C7CCD1" font-size="13">Protocols protect users — before price reacts.</text>
+
+  <!-- 中间箭头 -->
+  <text x="500" y="238" text-anchor="middle" fill="#3DE686" font-size="24" font-family="'JetBrains Mono', monospace">vs</text>
+</svg>
