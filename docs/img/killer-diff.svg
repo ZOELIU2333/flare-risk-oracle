@@ -20,7 +20,7 @@
   <rect x="540" y="150" width="380" height="160" rx="12" fill="#0C0C0D" stroke="#E5645D" stroke-opacity="0.4"/>
   <circle cx="572" cy="184" r="4" fill="#E5645D"/>
   <text x="588" y="189" fill="#F2F2F3" font-size="15" font-weight="600">RiskOracle (AI)</text>
-  <text x="572" y="250" fill="#E5645D" font-size="52" font-weight="700" font-family="'JetBrains Mono', monospace">95</text>
+  <text x="572" y="250" fill="#E5645D" font-size="52" font-weight="700" font-family="'JetBrains Mono', monospace">91</text>
   <text x="662" y="250" fill="#55555C" font-size="20" font-family="'JetBrains Mono', monospace">/100</text>
   <text x="572" y="286" fill="#C7CCD1" font-size="13">Reads the headline → flags critical risk instantly.</text>
   <text x="572" y="304" fill="#C7CCD1" font-size="13">Protocols protect users — before price reacts.</text>

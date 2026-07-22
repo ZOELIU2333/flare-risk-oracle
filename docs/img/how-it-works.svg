@@ -22,9 +22,9 @@
   <!-- ② ANALYZE -->
   <rect x="270" y="80" width="210" height="140" rx="12" fill="#0C0C0D" stroke="#1F1F22"/>
   <text x="294" y="116" fill="#3DE686" font-size="12" font-family="'JetBrains Mono', monospace" letter-spacing="1">02 · ANALYZE</text>
-  <text x="294" y="150" fill="#F2F2F3" font-size="19" font-weight="700">Multi-AI</text>
-  <text x="294" y="176" fill="#8A8A90" font-size="13">Kimi K3 + DeepSeek</text>
-  <text x="294" y="196" fill="#8A8A90" font-size="13">consensus + news</text>
+  <text x="294" y="146" fill="#F2F2F3" font-size="19" font-weight="700">4-model consensus</text>
+  <text x="294" y="174" fill="#8A8A90" font-size="12">GPT-5.5 · Opus 4.8</text>
+  <text x="294" y="195" fill="#8A8A90" font-size="12">DeepSeek · Qwen3</text>
 
   <!-- ③ VERIFY -->
   <rect x="520" y="80" width="210" height="140" rx="12" fill="#0C0C0D" stroke="#1F1F22"/>

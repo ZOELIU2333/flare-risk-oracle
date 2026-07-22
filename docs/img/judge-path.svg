@@ -1,0 +1,74 @@
+<svg width="1200" height="320" viewBox="0 0 1200 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="flow-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0 0L9 4.5L0 9" fill="none" stroke="#3DE686" stroke-width="1.5"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="320" rx="8" fill="#000000"/>
+
+  <text x="290" y="33" text-anchor="middle" fill="#55555C" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="1.2">READ</text>
+  <text x="580" y="33" text-anchor="middle" fill="#55555C" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="1.2">PROVE</text>
+  <text x="870" y="33" text-anchor="middle" fill="#55555C" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="1.2">USE</text>
+
+  <line x1="273" y1="145" x2="303" y2="145" stroke="#3DE686" stroke-width="1.5" marker-end="url(#flow-arrow)"/>
+  <line x1="563" y1="145" x2="593" y2="145" stroke="#3DE686" stroke-width="1.5" marker-end="url(#flow-arrow)"/>
+  <line x1="853" y1="145" x2="883" y2="145" stroke="#3DE686" stroke-width="1.5" marker-end="url(#flow-arrow)"/>
+
+  <g>
+    <rect x="20" y="45" width="250" height="215" rx="8" fill="#0C0C0D" stroke="#2E2223"/>
+    <rect x="20" y="77" width="3" height="150" rx="1.5" fill="#E5645D"/>
+    <text x="44" y="78" fill="#E5645D" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="700" letter-spacing="1.1">01 / EVENT</text>
+    <text x="44" y="112" fill="#F2F2F3" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="21" font-weight="700">A headline drops</text>
+    <text x="44" y="148" fill="#55555C" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="1">PRICE ORACLE</text>
+    <text x="44" y="194" fill="#8A8A90" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="38" font-weight="700">LOW</text>
+    <text x="44" y="230" fill="#8A8A90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13">Price has not moved yet.</text>
+    <path d="M221 72H239V94H221Z" fill="none" stroke="#E5645D" stroke-width="1.4"/>
+    <path d="M225 79H235M225 84H235M225 89H232" stroke="#E5645D" stroke-width="1.2" stroke-linecap="round"/>
+  </g>
+
+  <g>
+    <rect x="310" y="45" width="250" height="215" rx="8" fill="#0C0C0D" stroke="#222B3A"/>
+    <rect x="310" y="77" width="3" height="150" rx="1.5" fill="#6EA8FE"/>
+    <text x="334" y="78" fill="#6EA8FE" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="700" letter-spacing="1.1">02 / UNDERSTAND</text>
+    <text x="334" y="112" fill="#F2F2F3" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="21" font-weight="700">4 AI models read it</text>
+    <text x="334" y="148" fill="#55555C" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="1">RISKORACLE</text>
+    <text x="334" y="194" fill="#E5645D" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="38" font-weight="700">91</text>
+    <text x="388" y="194" fill="#55555C" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">/ 100</text>
+    <text x="334" y="230" fill="#C7CCD1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13">Event risk becomes visible.</text>
+    <rect x="511" y="73" width="7" height="7" rx="2" fill="#6EA8FE"/>
+    <rect x="522" y="73" width="7" height="7" rx="2" fill="#6EA8FE" fill-opacity="0.4"/>
+    <rect x="511" y="84" width="7" height="7" rx="2" fill="#6EA8FE" fill-opacity="0.4"/>
+    <rect x="522" y="84" width="7" height="7" rx="2" fill="#6EA8FE"/>
+  </g>
+
+  <g>
+    <rect x="600" y="45" width="250" height="215" rx="8" fill="#0C0C0D" stroke="#213128"/>
+    <rect x="600" y="77" width="3" height="150" rx="1.5" fill="#3DE686"/>
+    <text x="624" y="78" fill="#3DE686" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="700" letter-spacing="1.1">03 / VERIFY</text>
+    <text x="624" y="112" fill="#F2F2F3" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="21" font-weight="700">Flare proves it</text>
+    <rect x="624" y="139" width="72" height="28" rx="5" fill="#101D16" stroke="#285239"/>
+    <text x="660" y="157" text-anchor="middle" fill="#3DE686" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="700">FTSO</text>
+    <path d="M704 153H727" stroke="#3DE686" stroke-width="1.4"/>
+    <path d="M722 149L727 153L722 157" fill="none" stroke="#3DE686" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="735" y="139" width="72" height="28" rx="5" fill="#101D16" stroke="#285239"/>
+    <text x="771" y="157" text-anchor="middle" fill="#3DE686" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="700">FDC</text>
+    <text x="624" y="199" fill="#F2F2F3" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" font-weight="650">Baseline + attestation</text>
+    <text x="624" y="230" fill="#8A8A90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13">Frozen result, verified on-chain.</text>
+  </g>
+
+  <g>
+    <rect x="890" y="45" width="290" height="215" rx="8" fill="#0C0C0D" stroke="#373020"/>
+    <rect x="890" y="77" width="3" height="150" rx="1.5" fill="#F3C969"/>
+    <text x="914" y="78" fill="#F3C969" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="700" letter-spacing="1.1">04 / ACT</text>
+    <text x="914" y="112" fill="#F2F2F3" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="21" font-weight="700">DeFi responds</text>
+    <text x="914" y="151" fill="#8A8A90" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="1">LENDING</text>
+    <text x="1138" y="153" text-anchor="end" fill="#F3C969" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="700">250%</text>
+    <line x1="914" y1="164" x2="1138" y2="164" stroke="#242428"/>
+    <text x="914" y="189" fill="#8A8A90" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="1">INSURANCE</text>
+    <text x="1138" y="191" text-anchor="end" fill="#F3C969" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="700">REPRICE</text>
+    <text x="914" y="230" fill="#C7CCD1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13">Before price catches up.</text>
+  </g>
+
+  <text x="600" y="298" text-anchor="middle" fill="#55555C" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" letter-spacing="1.3">EVENT  ->  CONSENSUS  ->  ATTESTATION  ->  POLICY</text>
+</svg>
