@@ -1,93 +1,83 @@
 1
-00:00:00,350 --> 00:00:03,300
+00:00:01,100 --> 00:00:03,964
 The XRP price hasn't moved.
 
 2
-00:00:03,300 --> 00:00:06,600
+00:00:03,914 --> 00:00:06,134
 But the risk already has.
 
 3
-00:00:07,000 --> 00:00:11,200
-Most DeFi collateral controls wait for price data
-to reveal a crisis.
+00:00:06,134 --> 00:00:10,904
+Most DeFi collateral controls wait for price data to reveal a crisis.
 
 4
-00:00:11,200 --> 00:00:15,800
+00:00:10,904 --> 00:00:14,654
 By then, lending markets may already be exposed.
 
 5
-00:00:16,000 --> 00:00:20,300
+00:00:14,654 --> 00:00:18,744
 This is RiskOracle, built for interoperable assets on Flare.
 
 6
-00:00:20,300 --> 00:00:26,000
+00:00:18,744 --> 00:00:22,833
 Watch the same XRP price as a regulatory shock arrives.
 
 7
-00:00:26,000 --> 00:00:31,700
+00:00:22,833 --> 00:00:25,649
 A price-only oracle still reads low.
 
 8
-00:00:32,000 --> 00:00:36,400
+00:00:25,649 --> 00:00:29,557
 RiskOracle sends the headline to four independent models.
 
 9
-00:00:36,400 --> 00:00:41,800
-GPT-5.5: 92 · Claude Opus: 85
-DeepSeek: 95 · Qwen3: 85
+00:00:29,557 --> 00:00:38,064
+GPT-5.5 scores 92, Claude Opus 85, DeepSeek 95, and Qwen3 85.
 
 10
-00:00:41,800 --> 00:00:45,000
+00:00:38,064 --> 00:00:42,215
 Consensus: 89, before the market reprices.
 
 11
-00:00:45,300 --> 00:00:50,700
+00:00:42,215 --> 00:00:45,200
 The models never see one another's answers.
 
 12
-00:00:50,700 --> 00:00:56,000
-RiskOracle makes uncertainty visible instead of hiding it.
+00:00:45,200 --> 00:00:52,664
+RiskOracle exposes their spread and applies divergence-aware consensus, making uncertainty visible instead of hiding it.
 
 13
-00:00:56,200 --> 00:01:01,200
+00:00:52,664 --> 00:00:56,899
 The pipeline begins with Flare FTSOv2 market state.
 
 14
-00:01:01,200 --> 00:01:06,600
+00:00:56,899 --> 00:01:02,033
 AI adds event, liquidity, volatility, and contagion context.
 
 15
-00:01:06,600 --> 00:01:13,000
-RiskOracle freezes non-deterministic model output into
-deterministic JSON for FDC Web2Json attestation.
+00:01:02,033 --> 00:01:10,734
+Because model output is non-deterministic, RiskOracle freezes the result into deterministic JSON for FDC Web2Json attestation.
 
 16
-00:01:13,200 --> 00:01:18,500
-Deployed Coston2 contracts. Immutable RiskUpdated events.
+00:01:10,734 --> 00:01:19,314
+Here is the proof: deployed Coston2 contracts, immutable RiskUpdated events, and a successful end-to-end FDC transaction.
 
 17
-00:01:18,500 --> 00:01:23,000
-A successful end-to-end FDC transaction.
+00:01:19,314 --> 00:01:25,673
+Continuous demo updates use a lightweight signer; the full FDC path is already proven on-chain.
 
 18
-00:01:23,000 --> 00:01:28,200
-Continuous demo updates use a lightweight signer;
-the full FDC path is already proven on-chain.
+00:01:25,673 --> 00:01:33,562
+At risk 95, the FXRP lending example suspends new borrowing, and the insurance pool stops new underwriting.
 
 19
-00:01:28,200 --> 00:01:33,600
-At risk 95, lending suspends new borrowing
-and insurance stops new underwriting.
-
-20
-00:01:33,600 --> 00:01:37,000
+00:01:33,562 --> 00:01:37,251
 One signal; policy remains with each protocol.
 
-21
-00:01:37,000 --> 00:01:41,200
+20
+00:01:37,251 --> 00:01:40,516
 Built from scratch during Flare Summer Signal.
 
-22
-00:01:41,200 --> 00:01:46,800
-RiskOracle: verifiable risk intelligence for interoperable assets,
-before price reacts.
+21
+00:01:40,516 --> 00:01:46,571
+RiskOracle: verifiable risk intelligence for interoperable assets, before price reacts.

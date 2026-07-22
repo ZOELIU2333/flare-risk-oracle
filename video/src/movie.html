@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RiskOracle - Flare Summer Signal</title>
+    <link rel="stylesheet" href="./movie.css" />
+  </head>
+  <body>
+    <div id="film" aria-label="RiskOracle judge film">
+      <div class="noise"></div>
+      <div class="frame-lines" aria-hidden="true"></div>
+
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark"><span></span><span></span><span></span></div>
+          <span>RiskOracle</span>
+        </div>
+        <div class="topbar-center">VERIFIABLE RISK INTELLIGENCE</div>
+        <div class="network"><i></i>COSTON2</div>
+      </header>
+
+      <main class="stage">
+        <section class="scene scene-hook" data-scene="0,15.5">
+          <div class="hook-copy">
+            <div class="eyebrow"><span class="pulse-dot"></span>LIVE MARKET STATE</div>
+            <h1>The price<br /><span>hasn't moved.</span></h1>
+            <p class="hook-switch">But the risk <strong>already has.</strong></p>
+          </div>
+
+          <div class="price-terminal">
+            <div class="terminal-head">
+              <div><strong>XRP / USD</strong><span>FTSOv2</span></div>
+              <div class="live"><i></i>LIVE</div>
+            </div>
+            <div class="price-row">
+              <span class="price-symbol">$</span>
+              <span class="price-value">1.13465</span>
+            </div>
+            <div class="unchanged"><span>0.00%</span>PRICE UNCHANGED</div>
+            <svg class="price-line" viewBox="0 0 720 190" preserveAspectRatio="none">
+              <path class="grid-path" d="M0 45H720 M0 95H720 M0 145H720" />
+              <path class="market-path" d="M0 103 C60 98 92 108 145 102 S230 100 285 104 S365 98 425 102 S505 106 560 101 S650 102 720 102" />
+              <circle class="market-point" cx="720" cy="102" r="6" />
+            </svg>
+            <div class="event-wire">
+              <span class="event-time">T + 00:03</span>
+              <span class="event-label">REGULATORY EVENT DETECTED</span>
+            </div>
+          </div>
+
+          <div class="exposure-strip">
+            <div class="exposure-title">PRICE-ONLY CONTROL</div>
+            <div class="exposure-state low"><span></span>LOW RISK</div>
+            <div class="exposure-arrow"></div>
+            <div class="exposure-account">
+              <span>FXRP COLLATERAL</span>
+              <strong>$12.8M EXPOSED</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="scene scene-demo" data-scene="14.35,37.5">
+          <div class="section-label"><span>01</span> LIVE SHOCK TEST</div>
+          <div class="demo-layout">
+            <div class="shock-panel">
+              <div class="panel-kicker">NEWS SHOCK INPUT</div>
+              <div class="headline-field">
+                <span id="typed-headline"></span><i class="caret"></i>
+              </div>
+              <div class="input-meta">
+                <span>ASSET <strong>XRP</strong></span>
+                <span>MARKET PRICE <strong>$1.13465</strong></span>
+                <span class="stable-chip">UNCHANGED</span>
+              </div>
+              <button class="analyze-button" type="button">
+                <span class="button-radar"></span>
+                ANALYZE WITH 4 MODELS
+                <i>→</i>
+              </button>
+              <div class="progress-track"><span></span></div>
+            </div>
+
+            <div class="result-panel">
+              <div class="legacy-result">
+                <div>
+                  <span>PRICE-ONLY ORACLE</span>
+                  <strong>LOW</strong>
+                </div>
+                <div class="legacy-score">24</div>
+              </div>
+
+              <div class="model-grid">
+                <article class="model-card" data-model="0">
+                  <div class="model-top"><span class="model-icon">G</span><span>GPT-5.5</span><i></i></div>
+                  <div class="model-score"><b data-score="92">00</b><small>/100</small></div>
+                  <div class="model-bar"><span style="--target:92%"></span></div>
+                  <p>Regulatory contagion likely</p>
+                </article>
+                <article class="model-card" data-model="1">
+                  <div class="model-top"><span class="model-icon">C</span><span>CLAUDE OPUS 4.8</span><i></i></div>
+                  <div class="model-score"><b data-score="85">00</b><small>/100</small></div>
+                  <div class="model-bar"><span style="--target:85%"></span></div>
+                  <p>Exchange liquidity at risk</p>
+                </article>
+                <article class="model-card" data-model="2">
+                  <div class="model-top"><span class="model-icon">D</span><span>DEEPSEEK</span><i></i></div>
+                  <div class="model-score"><b data-score="95">00</b><small>/100</small></div>
+                  <div class="model-bar"><span style="--target:95%"></span></div>
+                  <p>Severe downside event risk</p>
+                </article>
+                <article class="model-card" data-model="3">
+                  <div class="model-top"><span class="model-icon">Q</span><span>QWEN3-235B</span><i></i></div>
+                  <div class="model-score"><b data-score="85">00</b><small>/100</small></div>
+                  <div class="model-bar"><span style="--target:85%"></span></div>
+                  <p>High-impact legal catalyst</p>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div class="cursor" aria-hidden="true">
+            <svg viewBox="0 0 30 38"><path d="M3 2L3 31L11 23L17 36L22 33L16 21L27 20Z" /></svg>
+            <span></span>
+          </div>
+        </section>
+
+        <section class="scene scene-consensus" data-scene="36.35,52.5">
+          <div class="consensus-focus">
+            <div class="ring-wrap">
+              <svg viewBox="0 0 260 260">
+                <circle class="ring-base" cx="130" cy="130" r="108" />
+                <circle class="ring-progress" cx="130" cy="130" r="108" />
+              </svg>
+              <div class="ring-value"><strong id="consensus-score">00</strong><span>CONSENSUS</span></div>
+            </div>
+            <div class="consensus-copy">
+              <div class="eyebrow">DIVERGENCE-AWARE CONSENSUS</div>
+              <h2>Risk is high.<br />Uncertainty is visible.</h2>
+              <div class="agreement-row">
+                <span>MODEL SPREAD</span>
+                <div class="spread-line">
+                  <i style="left:0%"></i><i style="left:0%"></i><i style="left:70%"></i><i style="left:100%"></i>
+                  <b></b>
+                </div>
+                <strong>10 PTS</strong>
+              </div>
+              <div class="agreement-row">
+                <span>AGREEMENT</span>
+                <div class="agreement-meter"><i></i></div>
+                <strong>HIGH</strong>
+              </div>
+              <p>Independent answers. Transparent spread. One verifiable signal.</p>
+            </div>
+          </div>
+          <div class="model-ribbon">
+            <div><span>GPT-5.5</span><b>92</b></div>
+            <div><span>CLAUDE</span><b>85</b></div>
+            <div><span>DEEPSEEK</span><b>95</b></div>
+            <div><span>QWEN3</span><b>85</b></div>
+          </div>
+        </section>
+
+        <section class="scene scene-pipeline" data-scene="51.35,71.85">
+          <div class="section-label"><span>02</span> FLARE-NATIVE PIPELINE</div>
+          <div class="pipeline-title">
+            <h2>From market state<br />to verifiable intelligence.</h2>
+            <p>Non-deterministic analysis becomes a deterministic on-chain input.</p>
+          </div>
+
+          <div class="pipeline">
+            <article class="pipe-node node-ftso" data-node="0">
+              <div class="node-index">01</div>
+              <div class="node-symbol">F</div>
+              <div><span>FLARE</span><strong>FTSOv2</strong><small>XRP / USD · $1.13465</small></div>
+            </article>
+            <div class="connector c1"><i></i><i></i><i></i></div>
+            <article class="pipe-node node-ai" data-node="1">
+              <div class="node-index">02</div>
+              <div class="node-symbol">4×</div>
+              <div><span>INDEPENDENT</span><strong>AI CONSENSUS</strong><small>Event · liquidity · contagion</small></div>
+            </article>
+            <div class="connector c2"><i></i><i></i><i></i></div>
+            <article class="pipe-node node-json" data-node="2">
+              <div class="node-index">03</div>
+              <div class="node-symbol">{ }</div>
+              <div><span>FROZEN</span><strong>DETERMINISTIC JSON</strong><small>Score · reason · timestamp</small></div>
+            </article>
+            <div class="connector c3"><i></i><i></i><i></i></div>
+            <article class="pipe-node node-fdc" data-node="3">
+              <div class="node-index">04</div>
+              <div class="node-symbol">✓</div>
+              <div><span>ATTESTED BY</span><strong>FDC WEB2JSON</strong><small>Cryptographic verification</small></div>
+            </article>
+            <div class="connector c4"><i></i><i></i><i></i></div>
+            <article class="pipe-node node-oracle" data-node="4">
+              <div class="node-index">05</div>
+              <div class="node-symbol">R</div>
+              <div><span>ON-CHAIN</span><strong>IRISKORACLE</strong><small>Reusable protocol interface</small></div>
+            </article>
+          </div>
+
+          <div class="json-inspector">
+            <div class="inspector-head"><span>risk-snapshot.json</span><b>DETERMINISTIC</b></div>
+            <pre>{
+  <em>"asset"</em>: <i>"XRP"</i>,
+  <em>"ftsoPrice"</em>: <i>"1.13465"</i>,
+  <em>"riskScore"</em>: <strong>89</strong>,
+  <em>"agreement"</em>: <i>"high"</i>,
+  <em>"timestamp"</em>: <i>"2026-07-22T...Z"</i>
+}</pre>
+          </div>
+        </section>
+
+        <section class="scene scene-proof" data-scene="70.7,85.5">
+          <div class="section-label"><span>03</span> ON-CHAIN PROOF</div>
+          <div class="proof-layout">
+            <div class="proof-copy">
+              <div class="eyebrow">COSTON2 · VERIFIED</div>
+              <h2>Not a mockup.<br />A successful transaction.</h2>
+              <p>AI output frozen, attested and written to an immutable RiskUpdated event.</p>
+              <div class="path-truth">
+                <div><i class="mint"></i><span>PROVEN PATH</span><strong>FDC Web2Json</strong></div>
+                <div><i class="blue"></i><span>LIVE DEMO PATH</span><strong>Lightweight signer</strong></div>
+              </div>
+            </div>
+
+            <div class="tx-window">
+              <div class="tx-head">
+                <div><span></span><span></span><span></span></div>
+                <strong>COSTON2 EXPLORER</strong>
+                <b class="tx-status"><i></i>SUCCESS</b>
+              </div>
+              <div class="tx-hash"><span>TRANSACTION HASH</span><code>0xe1aa6bf6d89a14422ce60af8646f8943676bcbc6de5c650a62ff3ea3268e69a7</code></div>
+              <div class="tx-grid">
+                <div><span>METHOD</span><strong>addRisk</strong></div>
+                <div><span>BLOCK</span><strong id="block-count">33099000</strong></div>
+                <div><span>CONTRACT</span><strong>RiskOracleFdc</strong></div>
+                <div><span>NETWORK</span><strong>Coston2</strong></div>
+              </div>
+              <div class="event-log">
+                <div class="event-head"><span>EVENT LOGS</span><b>RiskUpdated</b></div>
+                <div class="event-row"><span>asset</span><code>XRP</code></div>
+                <div class="event-row"><span>score</span><code>89</code></div>
+                <div class="event-row"><span>verified</span><code class="verified">true</code></div>
+                <div class="event-row"><span>attestationType</span><code>Web2Json</code></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="scene scene-protocols" data-scene="84.35,97.6">
+          <div class="section-label"><span>04</span> PROTOCOL RESPONSE</div>
+          <div class="protocol-heading">
+            <h2>One signal.<br />Policy stays with the protocol.</h2>
+            <div class="risk-gauge">
+              <div class="gauge-head"><span>ORACLE RISK</span><strong id="protocol-risk">25</strong></div>
+              <div class="gauge-track"><i></i><b></b></div>
+              <div class="gauge-labels"><span>LOW</span><span>GUARDED</span><span>CRITICAL</span></div>
+            </div>
+          </div>
+          <div class="protocol-flow">
+            <div class="oracle-core">
+              <span>IRISKORACLE</span>
+              <strong id="oracle-core-score">25</strong>
+              <small>XRP RISK</small>
+            </div>
+            <div class="branch branch-top"><i></i></div>
+            <div class="branch branch-bottom"><i></i></div>
+            <article class="protocol-card lending">
+              <div class="protocol-icon">L</div>
+              <div class="protocol-name"><span>FXRP LENDING</span><strong>COLLATERAL POLICY</strong></div>
+              <div class="protocol-value"><span>MIN. RATIO</span><strong id="lending-ratio">150%</strong></div>
+              <div class="policy-state"><i></i><span id="lending-state">STANDARD</span></div>
+            </article>
+            <article class="protocol-card insurance">
+              <div class="protocol-icon">I</div>
+              <div class="protocol-name"><span>FXRP INSURANCE</span><strong>UNDERWRITING POLICY</strong></div>
+              <div class="protocol-value"><span>PREMIUM</span><strong id="insurance-premium">3.25%</strong></div>
+              <div class="policy-state"><i></i><span id="insurance-state">OPEN</span></div>
+            </article>
+          </div>
+          <div class="policy-alerts">
+            <div class="policy-alert loan"><i>!</i><span>NEW BORROWING</span><strong>SUSPENDED</strong></div>
+            <div class="policy-alert cover"><i>!</i><span>NEW UNDERWRITING</span><strong>STOPPED</strong></div>
+          </div>
+        </section>
+
+        <section class="scene scene-outro" data-scene="96.45,108">
+          <div class="outro-grid">
+            <div class="outro-main">
+              <div class="outro-mark"><span></span><span></span><span></span></div>
+              <div class="outro-title">RiskOracle</div>
+              <h2>Verifiable risk intelligence<br />for interoperable assets.</h2>
+              <p>Before price reacts.</p>
+            </div>
+            <div class="outro-proof">
+              <div><span>BUILT ON</span><strong>FLARE</strong></div>
+              <div><span>NETWORK</span><strong>COSTON2</strong></div>
+              <div><span>AI CONSENSUS</span><strong>4 MODELS</strong></div>
+              <div><span>FDC PATH</span><strong>PROVEN</strong></div>
+            </div>
+          </div>
+          <div class="outro-links">
+            <span>LIVE DEMO</span><strong>flare-risk-oracle.onrender.com</strong>
+            <i></i>
+            <span>FLARE SUMMER SIGNAL · 2026</span>
+          </div>
+          <div class="built-new">BUILT FROM SCRATCH DURING FLARE SUMMER SIGNAL</div>
+        </section>
+      </main>
+
+      <div id="caption" class="caption" aria-live="off"></div>
+      <div class="timecode" aria-hidden="true"><span id="timecode">00:00</span><i></i></div>
+    </div>
+    <script src="./movie.js"></script>
+  </body>
+</html>

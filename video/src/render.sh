@@ -5,136 +5,81 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT"
 
 WORK="video/work"
-CAPTURES="$WORK/captures"
-VISUALS="$WORK/visuals"
+MOTION="$WORK/motion"
 AUDIO="$WORK/audio"
-EDIT="$WORK/edit"
+EDIT="$WORK/edit-v2"
 OUTPUT="video/output"
-RUNTIME="106.8"
+RUNTIME="108"
 
-mkdir -p "$AUDIO" "$EDIT/scenes" "$OUTPUT"
+mkdir -p "$AUDIO" "$EDIT" "$OUTPUT"
 
 require_file() {
   if [[ ! -s "$1" ]]; then
-    echo "Missing required production input: $1" >&2
+    echo "Missing required V2 input: $1" >&2
     exit 1
   fi
 }
 
-for file in \
-  "$CAPTURES/11-hero.png" \
-  "$CAPTURES/12-shock-before.png" \
-  "$CAPTURES/13-shock-result-same-price.png" \
-  "$CAPTURES/02-dashboard.png" \
-  "$VISUALS/01-hook.png" \
-  "$VISUALS/02-consensus.png" \
-  "$VISUALS/03-architecture.png" \
-  "$VISUALS/04-proof.png" \
-  "$VISUALS/05-protocols.png" \
-  "$VISUALS/06-close.png" \
-  "$VISUALS/captions.tsv" \
-  "video/voiceover.txt" \
-  "video/captions.srt"; do
-  require_file "$file"
-done
+require_file "$MOTION/movie-raw.webm"
+require_file "$MOTION/recording.json"
+require_file "$AUDIO/voice-neural-v2.mp3"
+require_file "$AUDIO/voice-neural-v2.srt"
 
-echo "[1/6] Generating and normalizing narration"
-say -v Daniel -r 170 -f video/voiceover.txt -o "$AUDIO/voice.aiff"
+STARTUP_OFFSET="$(node -e "process.stdout.write(String(require('./$MOTION/recording.json').startupOffset))")"
+
+echo "[1/6] Trimming the live motion capture"
 ffmpeg -hide_banner -loglevel error -y \
-  -i "$AUDIO/voice.aiff" \
-  -af "highpass=f=70,lowpass=f=12000,loudnorm=I=-16:TP=-1.5:LRA=7" \
-  -ar 48000 -ac 2 "$AUDIO/voice.wav"
+  -ss "$STARTUP_OFFSET" -i "$MOTION/movie-raw.webm" -t "$RUNTIME" \
+  -vf "fps=30,scale=1920:1080:flags=lanczos,format=yuv420p" \
+  -an -c:v libx264 -preset slow -crf 17 -g 60 -movflags +faststart \
+  "$EDIT/picture-master.mp4"
 
-echo "[2/6] Generating restrained original sound bed"
+echo "[2/6] Preparing neural narration"
 ffmpeg -hide_banner -loglevel error -y \
-  -f lavfi -i "sine=frequency=55:duration=${RUNTIME}:sample_rate=48000" \
-  -f lavfi -i "sine=frequency=110:duration=${RUNTIME}:sample_rate=48000" \
-  -f lavfi -i "anoisesrc=color=pink:duration=${RUNTIME}:sample_rate=48000" \
-  -filter_complex "[0:a]volume=0.035,lowpass=f=180[a0];[1:a]volume=0.010,lowpass=f=420[a1];[2:a]volume=0.0015,lowpass=f=900[a2];[a0][a1][a2]amix=inputs=3:duration=longest,afade=t=in:st=0:d=2,afade=t=out:st=102:d=4" \
-  -ar 48000 -ac 2 "$AUDIO/bed.wav"
+  -i "$AUDIO/voice-neural-v2.mp3" \
+  -af "highpass=f=68,lowpass=f=14000,loudnorm=I=-16:TP=-1.5:LRA=7" \
+  -ar 48000 -ac 2 "$AUDIO/voice-neural-v2.wav"
 
-make_scene() {
-  local input="$1"
-  local duration="$2"
-  local output="$3"
-  local increment="$4"
-
-  ffmpeg -hide_banner -loglevel error -y \
-    -loop 1 -framerate 30 -i "$input" \
-    -t "$duration" \
-    -vf "scale=3840:2160:force_original_aspect_ratio=increase,crop=3840:2160,zoompan=z='min(zoom+${increment},1.035)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=1920x1080:fps=30,format=yuv420p" \
-    -an -c:v libx264 -preset medium -crf 18 -r 30 -g 60 -movflags +faststart "$output"
-}
-
-echo "[3/6] Rendering picture scenes"
-make_scene "$VISUALS/01-hook.png"             7.0  "$EDIT/scenes/01-hook.mp4"         0.00010
-make_scene "$CAPTURES/12-shock-before.png"     9.0  "$EDIT/scenes/02-blindspot.mp4"    0.00006
-make_scene "$CAPTURES/11-hero.png"             4.3  "$EDIT/scenes/03-product.mp4"      0.00008
-make_scene "$CAPTURES/12-shock-before.png"    11.7  "$EDIT/scenes/04-live-test.mp4"    0.00008
-make_scene "$VISUALS/02-consensus.png"        13.0  "$EDIT/scenes/05-consensus.mp4"    0.00006
-make_scene "$CAPTURES/02-dashboard.png"       11.0  "$EDIT/scenes/06-uncertainty.mp4"  0.00007
-make_scene "$VISUALS/03-architecture.png"     17.2  "$EDIT/scenes/07-architecture.mp4" 0.00004
-make_scene "$VISUALS/04-proof.png"            15.0  "$EDIT/scenes/08-proof.mp4"        0.00004
-make_scene "$VISUALS/05-protocols.png"         8.8  "$EDIT/scenes/09-protocols.mp4"    0.00006
-make_scene "$VISUALS/06-close.png"             9.8  "$EDIT/scenes/10-close.mp4"        0.00004
-
-cat > "$EDIT/scenes.ffconcat" <<EOF
-ffconcat version 1.0
-file 'scenes/01-hook.mp4'
-file 'scenes/02-blindspot.mp4'
-file 'scenes/03-product.mp4'
-file 'scenes/04-live-test.mp4'
-file 'scenes/05-consensus.mp4'
-file 'scenes/06-uncertainty.mp4'
-file 'scenes/07-architecture.mp4'
-file 'scenes/08-proof.mp4'
-file 'scenes/09-protocols.mp4'
-file 'scenes/10-close.mp4'
-EOF
-
+echo "[3/6] Building original ambient score"
 ffmpeg -hide_banner -loglevel error -y \
-  -f concat -safe 0 -i "$EDIT/scenes.ffconcat" \
-  -c copy "$EDIT/picture-master.mp4"
+  -f lavfi -i "sine=frequency=48:duration=${RUNTIME}:sample_rate=48000" \
+  -f lavfi -i "sine=frequency=96:duration=${RUNTIME}:sample_rate=48000" \
+  -f lavfi -i "anoisesrc=color=brown:duration=${RUNTIME}:sample_rate=48000" \
+  -filter_complex "[0:a]volume=0.032,lowpass=f=150,tremolo=f=0.12:d=0.28[a0];[1:a]volume=0.010,lowpass=f=360,tremolo=f=0.2:d=0.35[a1];[2:a]volume=0.005,lowpass=f=1000,highpass=f=80[a2];[a0][a1][a2]amix=inputs=3:duration=longest,afade=t=in:st=0:d=2.5,afade=t=out:st=103:d=5" \
+  -ar 48000 -ac 2 "$AUDIO/bed-v2.wav"
 
-echo "[4/6] Mixing narration and sound bed"
+echo "[4/6] Designing synchronized interface accents"
+ffmpeg -hide_banner -loglevel error -y \
+  -f lavfi -i "sine=frequency=920:duration=0.09:sample_rate=48000" \
+  -f lavfi -i "sine=frequency=620:duration=0.16:sample_rate=48000" \
+  -f lavfi -i "sine=frequency=700:duration=0.16:sample_rate=48000" \
+  -f lavfi -i "sine=frequency=780:duration=0.16:sample_rate=48000" \
+  -f lavfi -i "sine=frequency=860:duration=0.16:sample_rate=48000" \
+  -f lavfi -i "sine=frequency=440:duration=0.55:sample_rate=48000" \
+  -f lavfi -i "sine=frequency=880:duration=0.55:sample_rate=48000" \
+  -f lavfi -i "sine=frequency=740:duration=0.3:sample_rate=48000" \
+  -f lavfi -i "sine=frequency=1060:duration=0.2:sample_rate=48000" \
+  -f lavfi -i "anoisesrc=color=pink:duration=0.35:sample_rate=48000" \
+  -filter_complex "[0:a]volume=0.16,afade=t=out:st=0.04:d=0.05,adelay=23250|23250[a0];[1:a]volume=0.07,afade=t=out:st=0.08:d=0.08,adelay=30500|30500[a1];[2:a]volume=0.07,afade=t=out:st=0.08:d=0.08,adelay=32300|32300[a2];[3:a]volume=0.07,afade=t=out:st=0.08:d=0.08,adelay=34200|34200[a3];[4:a]volume=0.07,afade=t=out:st=0.08:d=0.08,adelay=36000|36000[a4];[5:a]volume=0.08,afade=t=out:st=0.2:d=0.35,adelay=39000|39000[a5];[6:a]volume=0.045,afade=t=out:st=0.2:d=0.35,adelay=39000|39000[a6];[7:a]volume=0.12,afade=t=out:st=0.12:d=0.18,adelay=72000|72000[a7];[8:a]volume=0.14,afade=t=out:st=0.08:d=0.12,adelay=77300|77300[a8];[9:a]volume=0.035,highpass=f=500,afade=t=out:st=0.15:d=0.2,adelay=90200|90200[a9];[a0][a1][a2][a3][a4][a5][a6][a7][a8][a9]amix=inputs=10:duration=longest,apad=pad_dur=108" \
+  -t "$RUNTIME" -ar 48000 -ac 2 "$AUDIO/accents-v2.wav"
+
+echo "[5/6] Mixing and mastering"
 ffmpeg -hide_banner -loglevel error -y \
   -i "$EDIT/picture-master.mp4" \
-  -i "$AUDIO/voice.wav" \
-  -i "$AUDIO/bed.wav" \
-  -filter_complex "[1:a]adelay=350|350,apad=pad_dur=5[voice];[2:a]volume=0.55[bed];[voice][bed]amix=inputs=2:duration=longest:dropout_transition=2,loudnorm=I=-14:TP=-1.0:LRA=8[mix]" \
-  -map 0:v:0 -map "[mix]" \
-  -c:v copy -c:a aac -b:a 192k -ar 48000 \
-  -t "$RUNTIME" -movflags +faststart \
-  "$OUTPUT/RiskOracle-Flare-Summer-Signal-captionless.mp4"
-
-echo "[5/6] Burning deterministic caption layers"
-caption_inputs=()
-filter_chain=""
-previous="[0:v]"
-input_index=1
-
-while IFS=$'\t' read -r caption_id start end caption_file; do
-  caption_inputs+=( -loop 1 -framerate 30 -i "$caption_file" )
-  current="[v${input_index}]"
-  filter_chain+="${previous}[${input_index}:v]overlay=0:0:enable='between(t,${start},${end})'${current};"
-  previous="$current"
-  input_index=$((input_index + 1))
-done < "$VISUALS/captions.tsv"
-
-filter_chain="${filter_chain%;}"
-ffmpeg -hide_banner -loglevel error -y \
-  -i "$OUTPUT/RiskOracle-Flare-Summer-Signal-captionless.mp4" \
-  "${caption_inputs[@]}" \
-  -filter_complex "$filter_chain" \
-  -map "$previous" -map 0:a:0 \
-  -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p -r 30 \
-  -c:a copy -t "$RUNTIME" -movflags +faststart \
+  -i "$AUDIO/voice-neural-v2.wav" \
+  -i "$AUDIO/bed-v2.wav" \
+  -i "$AUDIO/accents-v2.wav" \
+  -filter_complex "[1:a]adelay=1000|1000,apad=pad_dur=3[voice];[2:a]volume=.72[bed];[3:a]volume=.82[fx];[voice][bed][fx]amix=inputs=3:duration=longest:dropout_transition=2,loudnorm=I=-14:TP=-1.0:LRA=8[mix]" \
+  -map 0:v:0 -map "[mix]" -t "$RUNTIME" \
+  -c:v copy -c:a aac -b:a 224k -ar 48000 -movflags +faststart \
   "$OUTPUT/RiskOracle-Flare-Summer-Signal.mp4"
 
-cp video/captions.srt "$OUTPUT/RiskOracle-Flare-Summer-Signal.srt"
-cp "$VISUALS/thumbnail.png" "$OUTPUT/RiskOracle-thumbnail.png"
+ffmpeg -hide_banner -loglevel error -y \
+  -itsoffset 1 -i "$AUDIO/voice-neural-v2.srt" \
+  "$OUTPUT/RiskOracle-Flare-Summer-Signal.srt"
+perl -0pi -e 's/\n+\z/\n/' "$OUTPUT/RiskOracle-Flare-Summer-Signal.srt"
 
-echo "[6/6] Complete"
+echo "[6/6] Export complete"
 ffprobe -v error \
   -show_entries stream=index,codec_name,width,height,avg_frame_rate \
   -show_entries format=duration,size \
