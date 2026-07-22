@@ -1,0 +1,17 @@
+The XRP price hasn't moved. But the risk already has.
+
+Most DeFi collateral controls wait for price data to reveal a crisis. By then, lending markets may already be exposed.
+
+This is RiskOracle, built for interoperable assets on Flare. Watch the same XRP price as a regulatory shock arrives. A price-only oracle still reads low.
+
+RiskOracle sends the headline to four independent models. GPT-5.5 scores 92, Claude Opus 85, DeepSeek 95, and Qwen3 85. Consensus: 89, before the market reprices.
+
+The models never see one another's answers. RiskOracle exposes their spread and applies divergence-aware consensus, making uncertainty visible instead of hiding it.
+
+The pipeline begins with Flare FTSOv2 market state. AI adds event, liquidity, volatility, and contagion context. Because model output is non-deterministic, RiskOracle freezes the result into deterministic JSON for FDC Web2Json attestation.
+
+Here is the proof: deployed Coston2 contracts, immutable RiskUpdated events, and a successful end-to-end FDC transaction. Continuous demo updates use a lightweight signer; the full FDC path is already proven on-chain.
+
+At risk 95, the FXRP lending example suspends new borrowing, and the insurance pool stops new underwriting. One signal; policy remains with each protocol.
+
+Built from scratch during Flare Summer Signal. RiskOracle: verifiable risk intelligence for interoperable assets, before price reacts.
