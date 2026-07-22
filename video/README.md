@@ -5,10 +5,10 @@ RiskOracle Flare Summer Signal judge film.
 
 ## Creative format
 
-The 98.6-second film is a continuously rendered product story, not a screenshot
+The 98-second film is a continuously rendered product story, not a screenshot
 slideshow. A browser-based motion stage synchronizes:
 
-- a 1.6-second signal-ignition opening that establishes the product before narration;
+- a 1.7-second signal-ignition opening whose final 0.7 seconds reveal the live XRP scene beneath it;
 - a live XRP price and regulatory shock;
 - typed input, cursor movement, and an analyze click targeted to the button's rendered center;
 - four independent model returns and an animated `89` consensus;
@@ -41,7 +41,7 @@ interface accents.
 
 - `src/movie.html`: semantic film scene structure.
 - `src/movie.css`: visual system and motion-ready UI composition.
-- `src/movie.js`: deterministic 98.6-second timeline and captions.
+- `src/movie.js`: deterministic 98-second timeline and captions.
 - `src/record-motion.mjs`: Playwright preview-frame and fallback recording.
 - `src/render-frames.mjs`: crisp frame-exact 1920x1080 picture rendering.
 - `src/render.sh`: trim, sound design, mix, master, captions, and final export.
@@ -89,10 +89,10 @@ python3 -m edge_tts \
 
 ## Final verification
 
-- Runtime: `98.600s`
+- Runtime: `98.000s`
 - Video: H.264, `1920x1080`, `30 fps`
-- Picture: 2,958 frame-exact high-quality renders, no low-bitrate screen capture
-- Audio: AAC, integrated loudness `-14.0 LUFS`, true peak `-1.3 dBFS`
+- Picture: 2,940 frame-exact high-quality renders, no low-bitrate screen capture
+- Audio: AAC, integrated loudness `-14.0 LUFS`, true peak `-1.0 dBFS`
 - Motion: persistent signal rail plus scene-specific scans, pulses, counters, and data packets
 - Selected XRP price: `$1.13465` before and after the shock
 - Model scores: GPT-5.5 `92`, Claude Opus 4.8 `85`, DeepSeek `95`, Qwen3-235B `85`

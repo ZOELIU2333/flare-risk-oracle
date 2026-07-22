@@ -1,7 +1,8 @@
 (() => {
-  const INTRO_DURATION = 1.6;
+  const INTRO_DURATION = 1.7;
+  const STORY_OFFSET = 1.0;
   const STORY_RUNTIME = 97;
-  const DURATION = STORY_RUNTIME + INTRO_DURATION;
+  const DURATION = STORY_RUNTIME + STORY_OFFSET;
   const STORY_DURATION = 108;
   const film = document.getElementById("film");
   const root = document.documentElement;
@@ -79,14 +80,18 @@
 
   function updateIntro(t) {
     const visible = t < INTRO_DURATION;
+    const wipe = smooth(progress(t, STORY_OFFSET, INTRO_DURATION));
     set("--intro-visibility", visible ? "visible" : "hidden");
-    set("--intro-opacity", 1 - smooth(progress(t, 1.22, INTRO_DURATION)));
+    set("--intro-wipe", wipe);
+    set("--transition-scan-show", visible ? smooth(progress(t, 0.96, 1.08)) * (1 - smooth(progress(t, 1.58, INTRO_DURATION))) : 0);
+    set("--hook-copy-show", smooth(progress(t, 1.48, INTRO_DURATION)));
     set("--intro-grid", ease(progress(t, 0.05, 0.8)));
     set("--intro-brand", ease(progress(t, 0.18, 0.64)));
     set("--intro-kicker", ease(progress(t, 0.42, 0.92)));
-    set("--intro-title", ease(progress(t, 0.56, 1.08)));
-    set("--intro-flow", ease(progress(t, 0.82, 1.34)));
-    set("--intro-scan", ease(progress(t, 0.72, 1.58)));
+    set("--intro-title", ease(progress(t, 0.56, 1.02)) * (1 - smooth(progress(t, 1.4, 1.66))));
+    set("--intro-title-exit", smooth(progress(t, 1.34, 1.66)));
+    set("--intro-flow", ease(progress(t, 0.78, 1.05)) * (1 - smooth(progress(t, 1.26, 1.58))));
+    set("--intro-scan", ease(progress(t, 0.68, 1.06)));
   }
 
   function updateHook(t) {
@@ -223,7 +228,7 @@
   function render(t) {
     const time = clamp(t, 0, DURATION);
     set("--film-progress", time / DURATION);
-    const storyFrameTime = clamp(time - INTRO_DURATION, 0, STORY_RUNTIME);
+    const storyFrameTime = clamp(time - STORY_OFFSET, 0, STORY_RUNTIME);
     const storyTime = storyFrameTime * (STORY_DURATION / STORY_RUNTIME);
     set("--micro", ((Math.sin(storyTime * 3.1) + 1) / 2).toFixed(4));
     set("--micro-alt", ((Math.sin(storyTime * 2.2 + 1.7) + 1) / 2).toFixed(4));

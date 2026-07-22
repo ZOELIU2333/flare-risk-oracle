@@ -63,7 +63,7 @@ body { font-variant-numeric: tabular-nums; }
   z-index: 45;
   overflow: hidden;
   background: #070a0a;
-  opacity: var(--intro-opacity, 1);
+  clip-path: inset(0 calc(var(--intro-wipe, 0) * 100%) 0 0);
   visibility: var(--intro-visibility, visible);
   pointer-events: none;
 }
@@ -103,7 +103,7 @@ body { font-variant-numeric: tabular-nums; }
   line-height: 1;
   letter-spacing: 0;
   opacity: var(--intro-title, 0);
-  transform: translateY(calc((1 - var(--intro-title, 0)) * 20px));
+  transform: translateY(calc((1 - var(--intro-title, 0)) * 20px - var(--intro-title-exit, 0) * 16px));
 }
 .intro-flow {
   position: absolute;
@@ -144,6 +144,28 @@ body { font-variant-numeric: tabular-nums; }
   margin-top: -3px;
   background: var(--mint);
   box-shadow: 0 0 20px rgba(67,230,162,.9);
+}
+.transition-scan {
+  position: absolute;
+  z-index: 46;
+  top: 76px;
+  bottom: 34px;
+  left: calc((1 - var(--intro-wipe, 0)) * 100%);
+  width: 1px;
+  background: var(--mint);
+  opacity: var(--transition-scan-show, 0);
+  box-shadow: 0 0 22px rgba(67,230,162,.8);
+  pointer-events: none;
+}
+.transition-scan::after {
+  content: "LIVE DATA";
+  position: absolute;
+  right: 10px;
+  top: 18px;
+  color: var(--mint);
+  font: 700 8px ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 1.2px;
+  white-space: nowrap;
 }
 
 .topbar {
@@ -223,7 +245,7 @@ body { font-variant-numeric: tabular-nums; }
 
 /* Hook */
 .scene-hook { padding-top: 150px; }
-.hook-copy { position: absolute; left: 110px; top: 176px; width: 740px; }
+.hook-copy { position: absolute; left: 110px; top: 176px; width: 740px; opacity: var(--hook-copy-show, 1); transform: translateY(calc((1 - var(--hook-copy-show, 1)) * 16px)); }
 .hook-copy .eyebrow { display: flex; align-items: center; gap: 12px; }
 .pulse-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 0 rgba(67,230,162,.45); }
 .pulse-dot { box-shadow: 0 0 0 calc(var(--micro,0) * 12px) rgba(67,230,162,calc(.45 - var(--micro,0) * .45)); }

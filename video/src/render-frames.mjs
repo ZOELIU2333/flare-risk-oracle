@@ -12,7 +12,7 @@ const root = resolve(new URL("../..", import.meta.url).pathname);
 const outputDir = join(root, "video/work/motion");
 const fps = 30;
 const durationArg = process.argv.find((value) => value.startsWith("--seconds="));
-const duration = durationArg ? Number(durationArg.split("=")[1]) : 98.6;
+const duration = durationArg ? Number(durationArg.split("=")[1]) : 98;
 const output = join(outputDir, durationArg ? `picture-test-${duration}s.mp4` : "picture-master-hq.mp4");
 const totalFrames = Math.round(duration * fps);
 mkdirSync(outputDir, { recursive: true });
