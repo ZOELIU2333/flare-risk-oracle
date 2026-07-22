@@ -110,9 +110,12 @@ async function refreshAll() {
   refreshing = true;
   try {
     const mkt = await getMarketContext(); // { XRP, BTC, ETH }
-    for (const sym of ASSETS) {
+    for (let i = 0; i < ASSETS.length; i++) {
+      const sym = ASSETS[i];
       try { await refreshAsset(sym, mkt); }
       catch (e) { console.error(`[risk:${sym}] failed:`, e.message); }
+      // 资产间隔：中转对 Claude 有每分钟 token 限流，错开到不同分钟窗口避免撞限流
+      if (i < ASSETS.length - 1) await new Promise((r) => setTimeout(r, 40000));
     }
     saveHistory(riskHistory);
   } finally {
