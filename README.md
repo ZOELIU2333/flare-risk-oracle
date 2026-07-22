@@ -13,7 +13,7 @@ FXRP or other interoperable assets as collateral.
 <p>
   <a href="https://flare-risk-oracle.onrender.com/"><img alt="Live product - hosted and open" src="docs/img/status-live.svg" width="174"></a>
   <a href="https://flare-risk-oracle.onrender.com/demo-video.html"><img alt="98-second judge film - stream online" src="docs/img/status-video.svg" width="174"></a>
-  <a href="https://github.com/ZOELIU2333/flare-risk-oracle/blob/main/lib/risk-analyzer.js"><img alt="Model engine - inspect four-model source" src="docs/img/status-models.svg" width="174"></a>
+  <a href="#consensus-precisely"><img alt="Consensus logic - learn how four models agree" src="docs/img/status-models.svg" width="174"></a>
   <a href="https://coston2-explorer.flare.network/tx/0xe1aa6bf6d89a14422ce60af8646f8943676bcbc6de5c650a62ff3ea3268e69a7"><img alt="FDC proof - verified on Coston2" src="docs/img/status-proof.svg" width="174"></a>
 </p>
 
