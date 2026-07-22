@@ -96,6 +96,7 @@ async function refreshAsset(symbol, mkt) {
   if (symbol === "XRP") {
     pushRisk(risk.score, risk.reason)
       .then((res) => {
+        if (!res) return; // 未配置私钥，自动上链已跳过
         riskCaches.XRP.onchain = { contract: res.contract, txHash: res.txHash, at: Math.floor(Date.now() / 1000) };
         console.log(`[onchain] pushed XRP score=${risk.score} tx=${res.txHash}`);
       })

@@ -16,9 +16,13 @@ const ABI = [
   "event RiskUpdated(uint256 score, string reason, uint256 timestamp)",
 ];
 
+// 是否配置了私钥（未配置则自动上链静默跳过，不影响 AI 风险分析主流程）
+const onchainEnabled = !!PRIVATE_KEY;
+
 let wallet, contract;
 function init() {
   if (contract) return contract;
+  if (!PRIVATE_KEY) throw new Error("PRIVATE_KEY 未配置，自动上链已跳过");
   const provider = new ethers.JsonRpcProvider(RPC);
   const pk = PRIVATE_KEY.startsWith("0x") ? PRIVATE_KEY : "0x" + PRIVATE_KEY;
   wallet = new ethers.Wallet(pk, provider);
@@ -27,6 +31,7 @@ function init() {
 }
 
 async function pushRisk(score, reason) {
+  if (!onchainEnabled) return null;
   const c = init();
   const tx = await c.setRisk(score, String(reason).slice(0, 120));
   await tx.wait();
