@@ -9,6 +9,7 @@ const ftsoStrategy = require("../risk-strategies/ftso-live-analysis");
 const newsStrategy = require("../risk-strategies/news-analysis");
 const { getPrice, getMarketContext } = require("./ftso");
 const { pushRisk, CONTRACT, readOnchainHistory } = require("./onchain");
+const { mountVideoRoutes } = require("./video-stream");
 
 const ASSETS = ["XRP", "BTC", "ETH"];
 const MAX_HISTORY = 20;
@@ -59,6 +60,7 @@ app.use((req, res, next) => {
 });
 // 同源托管前端静态文件（部署时一个服务同时给页面 + API）
 app.use(express.static(path.join(__dirname, "..", "frontend")));
+mountVideoRoutes(app);
 
 // 各资产的风险缓存 + 历史
 const riskCaches = { XRP: { status: "initializing", updatedAt: 0 }, BTC: { status: "initializing", updatedAt: 0 }, ETH: { status: "initializing", updatedAt: 0 } };

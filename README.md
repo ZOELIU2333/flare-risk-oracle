@@ -11,15 +11,13 @@ contract-readable risk score for interoperable assets.
 FXRP or other interoperable assets as collateral.
 
 <p>
-  <a href="https://flare-risk-oracle.onrender.com/"><img alt="Live demo open now" src="docs/img/status-live.svg" width="170"></a>
-  <a href="https://coston2-explorer.flare.network/address/0x29D2567bbD5979426fadAdB8991C10dE267f4304"><img alt="Coston2 network" src="docs/img/status-network.svg" width="170"></a>
-  <img alt="Four AI model consensus" src="docs/img/status-models.svg" width="170">
-  <a href="https://coston2-explorer.flare.network/tx/0xe1aa6bf6d89a14422ce60af8646f8943676bcbc6de5c650a62ff3ea3268e69a7"><img alt="FDC proof verified" src="docs/img/status-proof.svg" width="170"></a>
+  <a href="https://flare-risk-oracle.onrender.com/"><img alt="Live product - hosted and open" src="docs/img/status-live.svg" width="174"></a>
+  <a href="https://flare-risk-oracle.onrender.com/demo-video.html"><img alt="98-second judge film - stream online" src="docs/img/status-video.svg" width="174"></a>
+  <a href="https://github.com/ZOELIU2333/flare-risk-oracle/blob/main/lib/risk-analyzer.js"><img alt="Model engine - inspect four-model source" src="docs/img/status-models.svg" width="174"></a>
+  <a href="https://coston2-explorer.flare.network/tx/0xe1aa6bf6d89a14422ce60af8646f8943676bcbc6de5c650a62ff3ea3268e69a7"><img alt="FDC proof - verified on Coston2" src="docs/img/status-proof.svg" width="174"></a>
 </p>
 
-### [Launch live app →](https://flare-risk-oracle.onrender.com/) · [Demo video (98s) →](https://github.com/ZOELIU2333/flare-risk-oracle/releases/tag/video-v1.0.0) · [Verify on-chain proof →](#on-chain-proof)
-
-<sub>Hosted app: <a href="https://flare-risk-oracle.onrender.com/">flare-risk-oracle.onrender.com</a> · <a href="https://github.com/ZOELIU2333/flare-risk-oracle/releases/download/video-v1.0.0/RiskOracle-Flare-Summer-Signal.mp4">Download 1080p MP4</a> · No wallet or sign-in required</sub>
+<sub>Hosted app: <a href="https://flare-risk-oracle.onrender.com/">flare-risk-oracle.onrender.com</a> · <a href="https://github.com/ZOELIU2333/flare-risk-oracle/releases/tag/video-v1.0.0">Film release + SHA-256</a> · No wallet or sign-in required</sub>
 
 <sub>Flare Summer Signal · Bounty 1: Interoperable Asset Products · Built on Coston2</sub>
 
@@ -63,7 +61,7 @@ advantage: understanding new information before it is fully priced in.
 
 No wallet, API key, or local setup is required for evaluation.
 
-Prefer a guided tour? **[Open the 98-second judge film release](https://github.com/ZOELIU2333/flare-risk-oracle/releases/tag/video-v1.0.0)** to see the unchanged FTSO price, four-model consensus, FDC proof, and protocol response as one continuous flow. The release provides the [1080p MP4](https://github.com/ZOELIU2333/flare-risk-oracle/releases/download/video-v1.0.0/RiskOracle-Flare-Summer-Signal.mp4) and its SHA-256 digest.
+Prefer a guided tour? **[Watch the 98-second judge film online](https://flare-risk-oracle.onrender.com/demo-video.html)** to see the unchanged FTSO price, four-model consensus, FDC proof, and protocol response as one continuous flow. The [GitHub Release](https://github.com/ZOELIU2333/flare-risk-oracle/releases/tag/video-v1.0.0) retains the downloadable 1080p master and its SHA-256 digest.
 
 ## Working product
 
@@ -277,7 +275,7 @@ transaction; scheduled demo updates currently use an owner signer for speed.
 ### Because the most dangerous risk is the one an oracle cannot see.
 
 [Live demo](https://flare-risk-oracle.onrender.com/) ·
-[Judge film](https://github.com/ZOELIU2333/flare-risk-oracle/releases/tag/video-v1.0.0) ·
+[Judge film](https://flare-risk-oracle.onrender.com/demo-video.html) ·
 [Source code](https://github.com/ZOELIU2333/flare-risk-oracle) ·
 [FDC proof](https://coston2-explorer.flare.network/tx/0xe1aa6bf6d89a14422ce60af8646f8943676bcbc6de5c650a62ff3ea3268e69a7) ·
 [Hackathon page](https://dorahacks.io/hackathon/flaresummersignal/detail)

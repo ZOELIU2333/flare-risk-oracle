@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050506">
+<title>RiskOracle Judge Film · Flare Summer Signal</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23050506'/%3E%3Cpath d='M7 23V16h4v7H7Zm7 0V11h4v12h-4Zm7 0V7h4v16h-4Z' fill='%233de686'/%3E%3C/svg%3E">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #050506;
+    --surface: #0c0c0d;
+    --line: #29292d;
+    --ink: #f4f4f5;
+    --muted: #9a9aa1;
+    --green: #3de686;
+    --amber: #e5b567;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body {
+    margin: 0;
+    min-width: 320px;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    letter-spacing: 0;
+  }
+  a { color: inherit; }
+  .shell { width: min(1440px, calc(100% - 48px)); margin: 0 auto; }
+  header {
+    height: 64px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .brand { font-size: 17px; font-weight: 760; text-decoration: none; }
+  .brand span { color: var(--green); }
+  .nav-links { display: flex; align-items: center; gap: 24px; }
+  .nav-links a { color: var(--muted); font-size: 13px; text-decoration: none; }
+  .nav-links a:hover { color: var(--ink); }
+  main { padding: 56px 0 48px; }
+  .eyebrow {
+    margin: 0 0 14px;
+    color: var(--green);
+    font: 600 11px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+    text-transform: uppercase;
+  }
+  h1 { margin: 0; font-size: clamp(30px, 4vw, 56px); line-height: 1.06; letter-spacing: 0; }
+  .lede { margin: 16px 0 32px; color: var(--muted); font-size: 15px; line-height: 1.65; }
+  .player-wrap { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; }
+  video { display: block; width: 100%; height: 100%; object-fit: contain; background: #000; }
+  .error {
+    display: none;
+    position: absolute;
+    inset: 0;
+    padding: 24px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: rgba(5, 5, 6, 0.94);
+  }
+  .error[data-visible="true"] { display: flex; }
+  .error strong { display: block; margin-bottom: 8px; font-size: 18px; }
+  .error p { margin: 0 0 18px; color: var(--muted); line-height: 1.5; }
+  .error a { color: var(--green); }
+  .meta {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 28px;
+    align-items: start;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .facts { display: flex; flex-wrap: wrap; gap: 10px 24px; color: var(--muted); font-size: 13px; }
+  .facts strong { color: var(--ink); font-weight: 650; }
+  .proof { color: var(--amber); }
+  .actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 16px; }
+  .actions a { color: var(--muted); font-size: 13px; text-decoration: none; white-space: nowrap; }
+  .actions a:hover { color: var(--green); }
+  footer { padding: 24px 0 40px; color: #6f6f76; font-size: 12px; }
+  @media (max-width: 720px) {
+    .shell { width: min(100% - 28px, 1440px); }
+    header { height: 58px; }
+    .nav-links a:first-child { display: none; }
+    main { padding-top: 34px; }
+    .lede { margin-bottom: 22px; }
+    .meta { grid-template-columns: 1fr; gap: 18px; }
+    .actions { justify-content: flex-start; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <nav class="shell nav" aria-label="Judge film navigation">
+    <a class="brand" href="/">RISK<span>ORACLE</span></a>
+    <div class="nav-links">
+      <a href="/" target="_blank" rel="noopener noreferrer">Live product ↗</a>
+      <a href="https://github.com/ZOELIU2333/flare-risk-oracle" target="_blank" rel="noopener noreferrer">Source ↗</a>
+    </div>
+  </nav>
+</header>
+
+<main class="shell">
+  <p class="eyebrow">Flare Summer Signal · Judge Demo</p>
+  <h1>RiskOracle judge film</h1>
+  <p class="lede">Four independent AI views become one Flare-native, verifiable risk signal in 98 seconds.</p>
+
+  <div class="player-wrap">
+    <video id="judgeFilm" controls playsinline preload="metadata" poster="/demo-poster.png">
+      <source id="filmSource" src="/media/demo.mp4" type="video/mp4">
+      Your browser does not support HTML video.
+    </video>
+    <div id="playbackError" class="error" role="alert" aria-live="polite">
+      <div>
+        <strong>Playback is temporarily unavailable.</strong>
+        <p>The original film remains available from the verified GitHub Release.</p>
+        <a href="https://github.com/ZOELIU2333/flare-risk-oracle/releases/download/video-v1.0.0/RiskOracle-Flare-Summer-Signal.mp4">Download the 1080p MP4 ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="meta">
+    <div class="facts">
+      <span><strong>01:38</strong> runtime</span>
+      <span><strong>1080p</strong> H.264</span>
+      <span><strong>4 models</strong> in consensus</span>
+      <span class="proof">FDC proof verified</span>
+    </div>
+    <div class="actions">
+      <a href="/" target="_blank" rel="noopener noreferrer">Open live product ↗</a>
+      <a href="https://github.com/ZOELIU2333/flare-risk-oracle/releases/tag/video-v1.0.0" target="_blank" rel="noopener noreferrer">Release + SHA-256 ↗</a>
+      <a href="https://github.com/ZOELIU2333/flare-risk-oracle/releases/download/video-v1.0.0/RiskOracle-Flare-Summer-Signal.mp4">Download MP4</a>
+    </div>
+  </div>
+</main>
+
+<footer class="shell">Built for Flare Summer Signal · Bounty 1 · Coston2</footer>
+
+<script>
+  const video = document.getElementById("judgeFilm");
+  const source = document.getElementById("filmSource");
+  const error = document.getElementById("playbackError");
+  const showError = () => error.dataset.visible = "true";
+  video.addEventListener("error", showError);
+  source.addEventListener("error", showError);
+  video.addEventListener("loadedmetadata", () => error.dataset.visible = "false");
+</script>
+</body>
+</html>
