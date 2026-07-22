@@ -5,7 +5,7 @@ RiskOracle Flare Summer Signal judge film.
 
 ## Creative format
 
-The 108-second film is a continuously rendered product story, not a screenshot
+The 97-second film is a continuously rendered product story, not a screenshot
 slideshow. A browser-based motion stage synchronizes:
 
 - a live XRP price and regulatory shock;
@@ -16,8 +16,9 @@ slideshow. A browser-based motion stage synchronizes:
 - separate FXRP lending and insurance policy responses.
 
 Captions are white text with a restrained shadow and no background panel. The
-English narration uses the `en-GB-RyanNeural` neural voice, supported by an
-original ambient bed and synchronized interface accents.
+English narration uses the conversational `en-US-AndrewMultilingualNeural`
+voice at `+18%`, supported by an original ambient bed and synchronized
+interface accents.
 
 ## Truth boundaries
 
@@ -38,8 +39,9 @@ original ambient bed and synchronized interface accents.
 
 - `src/movie.html`: semantic film scene structure.
 - `src/movie.css`: visual system and motion-ready UI composition.
-- `src/movie.js`: deterministic 108-second timeline and captions.
-- `src/record-motion.mjs`: Playwright preview-frame and real-time recording.
+- `src/movie.js`: deterministic 97-second timeline and captions.
+- `src/record-motion.mjs`: Playwright preview-frame and fallback recording.
+- `src/render-frames.mjs`: crisp frame-exact 1920x1080 picture rendering.
 - `src/render.sh`: trim, sound design, mix, master, captions, and final export.
 - `voiceover.txt`: approved English narration.
 - `captions.srt`: source subtitle timing.
@@ -58,8 +60,8 @@ export CODEX_NODE_MODULES=/Users/liudan/.cache/codex-runtimes/codex-primary-runt
 # Fast visual inspection at 25 key moments
 NODE_PATH="$CODEX_NODE_MODULES" node video/src/record-motion.mjs --preview
 
-# Real-time 108-second motion capture
-NODE_PATH="$CODEX_NODE_MODULES" node video/src/record-motion.mjs
+# Frame-exact high-quality picture master
+NODE_PATH="$CODEX_NODE_MODULES" node video/src/render-frames.mjs
 
 # Picture trim, neural voice, sound design, mix, and master
 bash video/src/render.sh
@@ -69,12 +71,12 @@ The neural narration input is generated with Edge TTS:
 
 ```bash
 python3 -m edge_tts \
-  --voice en-GB-RyanNeural \
-  --rate=+3% \
+  --voice en-US-AndrewMultilingualNeural \
+  --rate=+18% \
   --pitch=-2Hz \
   --file video/voiceover.txt \
-  --write-media video/work/audio/voice-neural-v2.mp3 \
-  --write-subtitles video/work/audio/voice-neural-v2.srt
+  --write-media video/work/audio/voice-neural-v3.mp3 \
+  --write-subtitles video/work/audio/voice-neural-v3.srt
 ```
 
 ## Deliverables
@@ -85,10 +87,11 @@ python3 -m edge_tts \
 
 ## Final verification
 
-- Runtime: `108.000s`
+- Runtime: `97.000s`
 - Video: H.264, `1920x1080`, `30 fps`
-- Audio: AAC, integrated loudness `-14.1 LUFS`, true peak `-1.3 dBFS`
-- Dynamic continuity: no freeze interval longer than `2.5s` at `-55 dB`
+- Picture: 2,910 frame-exact high-quality renders, no low-bitrate screen capture
+- Audio: AAC, integrated loudness `-14.0 LUFS`, true peak `-1.0 dBFS`
+- Motion: persistent signal rail plus scene-specific scans, pulses, counters, and data packets
 - Selected XRP price: `$1.13465` before and after the shock
 - Model scores: GPT-5.5 `92`, Claude Opus 4.8 `85`, DeepSeek `95`, Qwen3-235B `85`
 - Consensus: `89`, high agreement

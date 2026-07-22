@@ -1,5 +1,6 @@
 (() => {
-  const DURATION = 108;
+  const DURATION = 97;
+  const STORY_DURATION = 108;
   const film = document.getElementById("film");
   const root = document.documentElement;
   const scenes = [...document.querySelectorAll("[data-scene]")].map((element) => {
@@ -9,27 +10,27 @@
 
   const headline = "US SEC announces formal investigation into Ripple; exchanges consider suspending XRP trading.";
   const captions = [
-    [1.10, 3.964, "The XRP price hasn't moved."],
-    [3.914, 6.134, "But the risk already has."],
-    [6.134, 10.904, "Most DeFi collateral controls wait for price data to reveal a crisis."],
-    [10.904, 14.654, "By then, lending markets may already be exposed."],
-    [14.654, 18.744, "This is RiskOracle, built for interoperable assets on Flare."],
-    [18.744, 22.833, "Watch the same XRP price as a regulatory shock arrives."],
-    [22.833, 25.649, "A price-only oracle still reads low."],
-    [25.649, 29.557, "RiskOracle sends the headline to four independent models."],
-    [29.557, 38.064, "GPT-5.5 scores 92, Claude Opus 85, DeepSeek 95, and Qwen3 85."],
-    [38.064, 42.215, "Consensus: 89, before the market reprices."],
-    [42.215, 45.200, "The models never see one another's answers."],
-    [45.200, 52.664, "RiskOracle exposes their spread and applies divergence-aware consensus, making uncertainty visible instead of hiding it."],
-    [52.664, 56.899, "The pipeline begins with Flare FTSOv2 market state."],
-    [56.899, 62.033, "AI adds event, liquidity, volatility, and contagion context."],
-    [62.033, 70.734, "Because model output is non-deterministic, RiskOracle freezes the result into deterministic JSON for FDC Web2Json attestation."],
-    [70.734, 79.314, "Here is the proof: deployed Coston2 contracts, immutable RiskUpdated events, and a successful end-to-end FDC transaction."],
-    [79.314, 85.673, "Continuous demo updates use a lightweight signer; the full FDC path is already proven on-chain."],
-    [85.673, 93.562, "At risk 95, the FXRP lending example suspends new borrowing, and the insurance pool stops new underwriting."],
-    [93.562, 97.251, "One signal; policy remains with each protocol."],
-    [97.251, 100.516, "Built from scratch during Flare Summer Signal."],
-    [100.516, 106.571, "RiskOracle: verifiable risk intelligence for interoperable assets, before price reacts."]
+    [1.050, 2.832, "The XRP price hasn't moved."],
+    [2.832, 4.474, "But the risk already has."],
+    [4.474, 8.764, "Most DeFi collateral controls wait for price data to reveal a crisis."],
+    [8.764, 11.709, "By then, lending markets may already be exposed."],
+    [11.709, 15.459, "This is RiskOracle, built for interoperable assets on Flare."],
+    [15.459, 19.050, "Watch the same XRP price as a regulatory shock arrives."],
+    [19.050, 21.095, "A price-only oracle still reads low."],
+    [21.095, 24.591, "RiskOracle sends the headline to four independent models."],
+    [24.591, 32.430, "GPT-5.5 scores 92, Claude Opus 85, DeepSeek 95, and Qwen3 85."],
+    [32.430, 36.137, "Consensus: 89, before the market reprices."],
+    [36.137, 38.531, "The models never see one another's answers."],
+    [38.531, 46.052, "RiskOracle exposes their spread and applies divergence-aware consensus, making uncertainty visible instead of hiding it."],
+    [46.052, 49.802, "The pipeline begins with Flare FTSOv2 market state."],
+    [49.802, 54.262, "AI adds event, liquidity, volatility, and contagion context."],
+    [54.262, 62.504, "Because model output is non-deterministic, RiskOracle freezes the result into deterministic JSON for FDC Web2Json attestation."],
+    [62.504, 70.703, "Here is the proof: deployed Coston2 contracts, immutable RiskUpdated events, and a successful end-to-end FDC transaction."],
+    [70.703, 76.752, "Continuous demo updates use a lightweight signer; the full FDC path is already proven on-chain."],
+    [76.752, 83.669, "At risk 95, the FXRP lending example suspends new borrowing, and the insurance pool stops new underwriting."],
+    [83.669, 86.624, "One signal; policy remains with each protocol."],
+    [86.624, 89.103, "Built from scratch during Flare Summer Signal."],
+    [89.103, 94.802, "RiskOracle: verifiable risk intelligence for interoperable assets, before price reacts."]
   ];
 
   const modelSchedule = [
@@ -67,12 +68,8 @@
       const opacity = sceneOpacity(t, start, end);
       const entrance = ease(progress(t, start, start + 1.3));
       const exit = ease(progress(t, end - 1.2, end));
-      const camera = progress(t, start, end);
-      const drift = Math.sin((t - start) * 0.42) * 0.65;
       setElement(element, "--scene-opacity", opacity.toFixed(4));
-      setElement(element, "--scene-y", `${((1 - entrance) * 34 - exit * 20 - camera * 3 + drift).toFixed(3)}px`);
-      setElement(element, "--scene-scale", (0.986 + entrance * 0.014 + camera * 0.008 + exit * 0.01).toFixed(5));
-      setElement(element, "--scene-blur", `${((1 - entrance) * 5 + exit * 4).toFixed(2)}px`);
+      setElement(element, "--scene-y", `${Math.round((1 - entrance) * 24 - exit * 12)}px`);
       element.style.visibility = opacity > 0.001 ? "visible" : "hidden";
     });
     set("--topbar-show", smooth(progress(t, 12.8, 14.4)) * (1 - smooth(progress(t, 96.2, 98.0))));
@@ -85,6 +82,7 @@
     set("--hook-switch", ease(progress(t, 3.3, 4.4)));
     set("--event-show", ease(progress(t, 4.2, 5.1)));
     set("--exposure-show", ease(progress(t, 8.2, 9.7)));
+    set("--exposure-packet", `${((Math.max(t - 8.4, 0) / 1.5) % 1) * 100}%`);
   }
 
   function updateDemo(t) {
@@ -157,6 +155,7 @@
     set("--hash-reveal", ease(progress(t, 71.4, 74.4)));
     set("--event-row-show", ease(progress(t, 74.0, 76.7)));
     document.getElementById("block-count").textContent = String(Math.round(Number(number(33099000, 33099670, progress(t, 70.8, 73.8)))));
+    document.getElementById("confirm-count").textContent = `${String(Math.max(1, Math.round(Number(number(1, 18, progress(t, 72.0, 83.5)))))).padStart(2, "0")} / 18`;
   }
 
   function updateProtocols(t) {
@@ -204,14 +203,27 @@
   function render(t) {
     const time = clamp(t, 0, DURATION);
     set("--film-progress", time / DURATION);
-    updateScenes(time);
-    updateHook(time);
-    updateDemo(time);
-    updateConsensus(time);
-    updatePipeline(time);
-    updateProof(time);
-    updateProtocols(time);
-    updateOutro(time);
+    const storyTime = time * (STORY_DURATION / DURATION);
+    set("--micro", ((Math.sin(storyTime * 3.1) + 1) / 2).toFixed(4));
+    set("--micro-alt", ((Math.sin(storyTime * 2.2 + 1.7) + 1) / 2).toFixed(4));
+    set("--ring-angle", `${(storyTime * 11.5).toFixed(2)}deg`);
+    set("--proof-scan", `${((storyTime * 9) % 100).toFixed(2)}%`);
+    set("--market-scan-x", `${(4 + (storyTime * 8.5) % 90).toFixed(2)}%`);
+    set("--consensus-scan", `${((storyTime * 12) % 100).toFixed(2)}%`);
+    set("--rail-x", `${((storyTime * 7.2) % 90).toFixed(2)}%`);
+    set("--rail-show", 1 - smooth(progress(storyTime, 96.0, 99.0)));
+    set("--phase-market", storyTime < 24 ? 1 : 0.35);
+    set("--phase-models", storyTime >= 24 && storyTime < 52 ? 1 : 0.35);
+    set("--phase-proof", storyTime >= 52 && storyTime < 82 ? 1 : 0.35);
+    set("--phase-policy", storyTime >= 82 ? 1 : 0.35);
+    updateScenes(storyTime);
+    updateHook(storyTime);
+    updateDemo(storyTime);
+    updateConsensus(storyTime);
+    updatePipeline(storyTime);
+    updateProof(storyTime);
+    updateProtocols(storyTime);
+    updateOutro(storyTime);
     updateCaption(time);
     document.getElementById("timecode").textContent = `${String(Math.floor(time / 60)).padStart(2, "0")}:${String(Math.floor(time % 60)).padStart(2, "0")}`;
     film.dataset.time = time.toFixed(3);

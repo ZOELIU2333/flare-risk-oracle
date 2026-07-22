@@ -41,7 +41,7 @@ async function capturePreviews() {
   const page = await context.newPage();
   await page.goto(`http://127.0.0.1:${port}/video/src/movie.html`, { waitUntil: "networkidle" });
   await page.waitForFunction(() => window.__movieReady === true);
-  const times = [2.5, 9.5, 14.6, 19.5, 23.3, 30.7, 34.5, 36.9, 39.5, 47.0, 51.8, 54.0, 61.5, 67.5, 71.2, 72.5, 77.2, 83.0, 84.8, 87.5, 91.2, 96.9, 97.7, 102.5, 107.0];
+  const times = [2.2, 6.0, 10.0, 14.0, 17.0, 20.9, 25.0, 28.0, 31.0, 35.0, 38.0, 43.0, 47.0, 52.0, 58.0, 64.0, 69.0, 73.0, 78.0, 82.0, 85.0, 88.0, 92.0, 96.0];
   for (const time of times) {
     await page.evaluate((value) => window.seekMovie(value), time);
     await page.screenshot({ path: join(previewDir, `frame-${String(time).replace(".", "-")}.png`) });
@@ -70,7 +70,7 @@ async function recordMovie() {
   renameSync(generatedPath, outputPath);
   const manifest = {
     outputPath,
-    movieDuration: 108,
+    movieDuration: 97,
     startupOffset: Number(((movieStartedAt - contextCreatedAt) / 1000).toFixed(3)),
     recordedAt: new Date().toISOString()
   };
