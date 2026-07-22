@@ -1,0 +1,1928 @@
+{
+  "XRP": [
+    {
+      "score": 49,
+      "price": 1.136976,
+      "at": 1784714786,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 47,
+          "reason": "XRP liquid large-cap; mixed BTC/ETH backdrop adds moderate contagion risk"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 54,
+          "reason": "ETH weak below $2k signals broad market stress, contagion lifts XRP risk despite deep liquidity"
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 28,
+          "reason": "XRP price moderate, BTC/ETH stable, low systemic contagion."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 43,
+          "reason": "XRP stable, but BTC/ETH dip increases systemic risk slightly"
+        }
+      ]
+    },
+    {
+      "score": 50,
+      "price": 1.136557,
+      "at": 1784715146,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 42,
+          "reason": "Large-cap XRP liquid; BTC firm limits contagion, but crypto volatility remains."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 54,
+          "reason": "ETH weakness signals market stress; XRP contagion risk elevated despite strong liquidity as major asset."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 47,
+          "reason": "Market under pressure from BTC/ETH decline; XRP stable but contagion risk elevated; high liquidity."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 55,
+          "reason": "XRP stable but exposed to BTC/ETH downside pressure, moderate volatility"
+        }
+      ]
+    },
+    {
+      "score": 49,
+      "price": 1.135861,
+      "at": 1784715506,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 52,
+          "reason": "Slightly rising; BTC/ETH contagion keeps XRP collateral risk moderate"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 51,
+          "reason": "Risk edging up (49->50->51); weak ETH at $1922 pressures market, contagion lifts XRP systemic risk despite good liquidit"
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 43,
+          "reason": "XRP price stable but BTC/ETH weak; trend rising from 49 to 50 suggests increasing systemic risk."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 48,
+          "reason": "Slight uptick in market risk; BTC/ETH dip increases contagion risk for XRP"
+        }
+      ]
+    },
+    {
+      "score": 46,
+      "price": 1.136269,
+      "at": 1784715866,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 48,
+          "reason": "Stable trend; large-cap XRP liquidity offsets mild BTC/ETH contagion risk"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 50,
+          "reason": "Stable risk (~49-50). Weak ETH near $1.9k signals macro pressure, adding contagion risk to XRP collateral."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 42,
+          "reason": "Price stable, large-cap asset, low contagion from market."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 43,
+          "reason": "Stable trend, moderate market risk from BTC/ETH dip contagion"
+        }
+      ]
+    },
+    {
+      "score": 45,
+      "price": 1.136256,
+      "at": 1784716226,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 43,
+          "reason": "Risk easing; major crypto backdrop stable, limited contagion, XRP liquid"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 45,
+          "reason": "Risk trending down (49->46). XRP large-cap with decent liquidity; ETH weakness adds mild contagion."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 38,
+          "reason": "XRP price stable, market calm, risk trend decreasing"
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 52,
+          "reason": "Slight uptrend in risk; market contagion from BTC/ETH pressure lifts XRP risk"
+        }
+      ]
+    },
+    {
+      "score": 45,
+      "price": 1.136665,
+      "at": 1784716586,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 42,
+          "reason": "Risk easing; XRP liquid large-cap, broad market contagion moderate."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 44,
+          "reason": "Risk trending down (49->45). XRP large-cap with decent liquidity; weak ETH adds mild contagion pressure."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 40,
+          "reason": "XRP price stable, trend declining, moderate market contagion from BTC/ETH."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 52,
+          "reason": "Slight uptick in market risk; BTC/ETH downtrend increases contagion risk for XRP"
+        }
+      ]
+    },
+    {
+      "score": 42,
+      "price": 1.136659,
+      "at": 1784716946,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 41,
+          "reason": "Risk eased then stable; major-cap XRP, good liquidity, mixed BTC/ETH contagion."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 44,
+          "reason": "Downtrend in risk scores continues; XRP large-cap liquidity solid, but soft ETH price signals mild market contagion."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 38,
+          "reason": "XRP price stable above $1, BTC/ETH normal, risk trend declining."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 44,
+          "reason": "Market risk up slightly; BTC/ETH downtrend increases contagion risk for XRP"
+        }
+      ]
+    },
+    {
+      "score": 41,
+      "price": 1.136764,
+      "at": 1784717306,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 39,
+          "reason": "Risk trend falling; BTC/ETH backdrop stable, XRP liquid but volatile"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 43,
+          "reason": "Risk trending down (49->42). XRP stable at $1.14, large-cap liquidity solid; soft ETH adds mild contagion."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 33,
+          "reason": "Price stable, BTC/ETH calm, risk trend declining from history."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 48,
+          "reason": "Market risk up slightly; BTC/ETH pressure increases contagion risk for XRP"
+        }
+      ]
+    },
+    {
+      "score": 36,
+      "price": 1.135494,
+      "at": 1784717666,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 36,
+          "reason": "Risk trend falling; BTC/ETH backdrop stable, XRP liquidity strong"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 40,
+          "reason": "Risk trending down (46->41). XRP major-cap with solid liquidity; soft BTC/ETH adds mild contagion."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 25,
+          "reason": "Price stable, market calm, risk trend declining."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 44,
+          "reason": "Market pressure up, XRP risk rising with BTC/ETH dip and recent score trend up"
+        }
+      ]
+    },
+    {
+      "score": 38,
+      "price": 1.135209,
+      "at": 1784718026,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 36,
+          "reason": "Risk trending down; major-cap XRP liquid, BTC/ETH contagion appears moderate"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 38,
+          "reason": "Risk trending down (45->36). XRP large-cap with solid liquidity; ETH weakness adds mild contagion risk."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 32,
+          "reason": "XRP price stable, risk history declining; BTC/ETH moderate, systemic risk low."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 44,
+          "reason": "Market risk up slightly; BTC/ETH dip increases contagion risk for XRP"
+        }
+      ]
+    },
+    {
+      "score": 38,
+      "price": 1.134777,
+      "at": 1784718386,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 37,
+          "reason": "Risk easing overall, slight uptick; BTC firm limits contagion; XRP liquid."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 38,
+          "reason": "Risk trending down (45->38). ETH weak signals broad-market pressure; XRP large-cap liquidity solid."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 32,
+          "reason": "XRP price moderate; BTC/ETH high reduce contagion; risk score trend slightly up from low."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 45,
+          "reason": "Market pressure from BTC/ETH downtrend raises systemic risk; recent risk score uptick noted"
+        }
+      ]
+    },
+    {
+      "score": 36,
+      "price": 1.134183,
+      "at": 1784718746,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 37,
+          "reason": "Large-cap XRP; recent risk flat/slightly down, limited BTC/ETH contagion"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 38,
+          "reason": "Risk stable-to-slightly-up from lows; ETH weakness adds contagion pressure on XRP collateral"
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 25,
+          "reason": "XRP price stable at $1.13, BTC/ETH high; trend flat; low systemic risk."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 44,
+          "reason": "Market risk up slightly; BTC/ETH pressure increases contagion risk for XRP"
+        }
+      ]
+    },
+    {
+      "score": 34,
+      "price": 1.135143,
+      "at": 1784719106,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 36,
+          "reason": "Risk easing; large-cap XRP liquid, BTC firm but ETH softness adds contagion."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 38,
+          "reason": "Weak ETH pressures market; XRP stable large-cap. Risk flat-to-slightly-up per recent trend."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 25,
+          "reason": "Price stable, market calm, trend slightly down, low systemic risk."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 38,
+          "reason": "Stable trend, moderate market risk from BTC/ETH dip"
+        }
+      ]
+    },
+    {
+      "score": 32,
+      "price": 1.135547,
+      "at": 1784719466,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 34,
+          "reason": "Risk easing; BTC firm limits contagion, XRP liquid but volatile"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 36,
+          "reason": "XRP major-cap, decent liquidity; ETH weakness adds mild contagion. Risk trend flat-to-declining."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 20,
+          "reason": "XRP price stable, market calm, and risk scores trending down."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 37,
+          "reason": "Stable trend, moderate market risk from BTC/ETH downtrend pressure"
+        }
+      ]
+    },
+    {
+      "score": 34,
+      "price": 1.135126,
+      "at": 1784719826,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 31,
+          "reason": "Risk trending down; large-cap XRP liquid, broad market contagion moderate"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 32,
+          "reason": "Risk trending down (38->32). ETH weakness adds mild contagion; XRP large-cap liquidity solid."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 30,
+          "reason": "Trend declining, BTC/ETH stable, XRP liquid and major asset."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 42,
+          "reason": "Market risk rises slightly; BTC/ETH pressure increases contagion risk for XRP"
+        }
+      ]
+    },
+    {
+      "score": 37,
+      "price": 1.135781,
+      "at": 1784720186,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 35,
+          "reason": "Large-cap FXRP; risk mostly down but last uptick, limited BTC/ETH contagion."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 36,
+          "reason": "ETH weakness signals broad market stress; XRP large-cap liquidity solid but risk trend ticking up from lows"
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 33,
+          "reason": "XRP price stable, recent risk scores declining then slight uptick, overall low but contagion from BTC/ETH adds moderate "
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 42,
+          "reason": "Market risk rising slightly; BTC/ETH dip increases contagion risk for XRP"
+        }
+      ]
+    },
+    {
+      "score": 39,
+      "price": 1.135908,
+      "at": 1784720546,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 38,
+          "reason": "Large-cap XRP, good liquidity; risk trend rising with moderate BTC/ETH contagion"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 38,
+          "reason": "Weak ETH pressures market; XRP risk trending up slightly. Large-cap liquidity cushions collateral risk."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 37,
+          "reason": "Price stable but risk trend upward; BTC/ETH neutral, systemic risk moderate."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 42,
+          "reason": "Stable trend, moderate market risk with slight upward pressure from BTC/ETH downturn"
+        }
+      ]
+    },
+    {
+      "score": 41,
+      "price": 1.135209,
+      "at": 1784720906,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 40,
+          "reason": "Risk trend rising; BTC/ETH contagion adds moderate XRP collateral risk"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 41,
+          "reason": "Rising risk trend (34->39); weak ETH pressures broader market, XRP large-cap liquidity solid"
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 45,
+          "reason": "XRP price stable, but upward risk trend and crypto market neutral; moderate systemic risk."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 38,
+          "reason": "Stable trend, moderate market risk from BTC/ETH dip"
+        }
+      ]
+    },
+    {
+      "score": 43,
+      "price": 1.13479,
+      "at": 1784721266,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 41,
+          "reason": "Risk rising; liquid large-cap XRP, but market contagion keeps risk moderate"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 43,
+          "reason": "Rising risk trend (32-41). Weak ETH signals broad market pressure; XRP contagion risk up despite good liquidity."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 50,
+          "reason": "Price stable but trend rising; crypto market implies moderate systemic risk."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 38,
+          "reason": "Rising risk trend; market contagion from BTC/ETH dip increases XRP collateral risk"
+        }
+      ]
+    },
+    {
+      "score": 46,
+      "price": 1.135753,
+      "at": 1784721626,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 43,
+          "reason": "Risk rising; XRP liquid large-cap, but crypto contagion keeps market risk moderate."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 44,
+          "reason": "Rising risk trend (34->43); weak ETH pressures market, XRP contagion elevates collateral risk"
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 55,
+          "reason": "Rising risk trend from history; moderate XRP price; BTC/ETH stable but market sentiment cautious."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 43,
+          "reason": "Rising trend, moderate market risk due to BTC/ETH pressure"
+        }
+      ]
+    }
+  ],
+  "BTC": [
+    {
+      "score": 67,
+      "price": 65899.11,
+      "at": 1784714786,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 73,
+          "reason": "Extreme XRP price anomaly; ETH backdrop weak, large-cap liquidity helps"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 65,
+          "reason": "XRP price feed ($65899) appears anomalous/erroneous; weak ETH and missing BTC signal broader market stress and contagion"
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 75,
+          "reason": "Abnormally high XRP price suggests extreme market risk; ETH stable but overall crypto market uncertainty."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 55,
+          "reason": "High XRP price amplifies market risk; moderate volatility and good liquidity"
+        }
+      ]
+    },
+    {
+      "score": 77,
+      "price": 65874.93,
+      "at": 1784715146,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 88,
+          "reason": "Extreme XRP price anomaly; BTC unavailable adds contagion and data risk"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 68,
+          "reason": "XRP/USD price appears anomalous; BTC feed missing and weak ETH signals broad market stress and contagion risk"
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 88,
+          "reason": "XRP price anomaly high, extreme volatility, potential market manipulation risk."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 65,
+          "reason": "High XRP price and market contagion from BTC/ETH downtrend increase risk"
+        }
+      ]
+    },
+    {
+      "score": 77,
+      "price": 65818.62,
+      "at": 1784715506,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 82,
+          "reason": "Risk rising; BTC data gap and ETH weakness add contagion, XRP price extreme"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 79,
+          "reason": "Risk trending up (67->77); anomalous XRP price feed and weak ETH signal broad market stress"
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 75,
+          "reason": "XRP price extremely high ($65.8k) suggests bubble risk. ETH moderate. Score trend rising (67->77). High systemic risk fr"
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 73,
+          "reason": "High market risk due to elevated price and rising trend; BTC/ETH weakness amplifies contagion risk."
+        }
+      ]
+    },
+    {
+      "score": 75,
+      "price": 65834.64,
+      "at": 1784715866,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 75,
+          "reason": "Elevated price anomaly; risk high and flat, with ETH-led market contagion."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 78,
+          "reason": "Risk trending up (67->77->77); anomalous XRP price feed and weak ETH signal broad market contagion."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 75,
+          "reason": "Extreme XRP price ($65834.64) signals high market risk; historical scores stable after rise; ETH at $1922 adds moderate "
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 73,
+          "reason": "High market risk due to elevated price and systemic pressure, risk trend rising"
+        }
+      ]
+    },
+    {
+      "score": 72,
+      "price": 65850.62,
+      "at": 1784716226,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 75,
+          "reason": "High oracle price anomaly; ETH pressure contagion; trend slightly easing."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 71,
+          "reason": "XRP price feed anomalously high; BTC data missing, weak ETH signals contagion. Risk trend flat-to-down but market uncert"
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 65,
+          "reason": "XRP price at high level but trend stable; ETH moderate, no strong systemic stress; risk scores plateaued."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 77,
+          "reason": "High market risk due to elevated price and systemic pressure from broader market"
+        }
+      ]
+    },
+    {
+      "score": 67,
+      "price": 65842.52,
+      "at": 1784716586,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 62,
+          "reason": "Risk easing from recent highs; ETH softness adds some market contagion"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 70,
+          "reason": "XRP price feed anomalous ($65k); BTC data missing, ETH soft. Risk trend declining but market contagion elevates caution."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 70,
+          "reason": "High XRP price ($65842) raises market risk; ETH stable but trend declining; volatility extreme; liquidity adequate."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 65,
+          "reason": "High XRP price & stable trend, but market risk elevated due to BTC/ETH weakness"
+        }
+      ]
+    },
+    {
+      "score": 61,
+      "price": 65834.4,
+      "at": 1784716946,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 59,
+          "reason": "Risk falling; ETH soft contagion, XRP liquid but price level anomalous."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 60,
+          "reason": "Risk trending down (77->67). XRP is large-cap with decent liquidity; BTC data missing, ETH stable limits contagion."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 53,
+          "reason": "XRP price extremely high vs normal; risk history declining; ETH stable, but systemic risk from undefined BTC."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 73,
+          "reason": "High market risk due to elevated price and downtrend in risk scores; BTC/ETH weakness increases contagion risk"
+        }
+      ]
+    },
+    {
+      "score": 61,
+      "price": 65850.21,
+      "at": 1784717306,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 50,
+          "reason": "Risk trending down; major XRP liquidity helps, ETH backdrop limits contagion."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 56,
+          "reason": "Risk trending down (77->61). XRP large-cap with deep liquidity; ETH soft adds mild contagion."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 65,
+          "reason": "High price abnormal, but risk trend declining; ETH stable, no BTC data; moderate systemic risk."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 72,
+          "reason": "High market risk due to elevated price and rising trend; BTC/ETH weakness increases contagion risk"
+        }
+      ]
+    },
+    {
+      "score": 65,
+      "price": 65809.91,
+      "at": 1784717666,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 61,
+          "reason": "Risk fell then flat; extreme XRP price raises vol risk, ETH contagion mild"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 57,
+          "reason": "Risk trending down from 75 to 61; XRP large-cap aids liquidity, but ETH softness adds contagion risk"
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 70,
+          "reason": "Extreme XRP price anomaly; ETH at moderate level; risk trend declining then stable."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 72,
+          "reason": "High market risk due to elevated price and systemic pressure; downtrend in risk scores slowing"
+        }
+      ]
+    },
+    {
+      "score": 63,
+      "price": 65801.83,
+      "at": 1784718026,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 70,
+          "reason": "Anomalous XRP price; risk down from past but recent uptick, contagion data gap"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 60,
+          "reason": "XRP price feed looks anomalous; weak ETH and missing BTC signal contagion risk. Trend recently ticking up from 61 to 65."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 55,
+          "reason": "Price high but stable; risk trend rising slightly; ETH stable, minimal contagion."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 65,
+          "reason": "High XRP price and rising marketRisk due to uncertain market trend and BTC/ETH weakness"
+        }
+      ]
+    },
+    {
+      "score": 62,
+      "price": 65817.73,
+      "at": 1784718386,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 67,
+          "reason": "Extreme XRP price; ETH soft, trend flat/slightly down; liquidity offsets."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 62,
+          "reason": "XRP price feed looks anomalous; BTC missing, ETH soft adds contagion risk. Trend stable near 63."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 55,
+          "reason": "XRP price anomaly high; market neutral, risk trend slightly down."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 63,
+          "reason": "High market risk due to elevated price and systemic pressure; trend stable"
+        }
+      ]
+    },
+    {
+      "score": 63,
+      "price": 65817.35,
+      "at": 1784718746,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 70,
+          "reason": "Abnormal XRP price; ETH pressure raises contagion, history slightly easing"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 60,
+          "reason": "XRP major-cap with decent liquidity; ETH weak signals contagion risk; score trend flat-to-easing"
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 58,
+          "reason": "Price extremely high indicates manipulation; ETH stable but overall market uncertainty; trend mild decline from recent p"
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 63,
+          "reason": "High market risk due to elevated price and market contagion; risk trend stable"
+        }
+      ]
+    },
+    {
+      "score": 61,
+      "price": 65825.32,
+      "at": 1784719106,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 62,
+          "reason": "Stable trend; crypto contagion risk, XRP liquid but volatile"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 62,
+          "reason": "XRP price feed looks anomalous; BTC data missing, weak ETH adds contagion. Risk stable ~62."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 55,
+          "reason": "XRP price high; ETH moderate; risk trend stable but high volatility concern."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 63,
+          "reason": "Market risk elevated due to unclear BTC trend and rising risk trend"
+        }
+      ]
+    },
+    {
+      "score": 60,
+      "price": 65785.03,
+      "at": 1784719466,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 58,
+          "reason": "Risk easing; XRP liquid, but extreme price level and ETH contagion keep caution"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 55,
+          "reason": "Risk trending down (65->61). XRP large-cap with solid liquidity; ETH softness adds mild contagion."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 62,
+          "reason": "Extreme XRP price anomaly increases market risk; ETH stable but trend declining; historical scores show slight improveme"
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 63,
+          "reason": "Market risk elevated due to unclear BTC trend and rising risk trend"
+        }
+      ]
+    },
+    {
+      "score": 62,
+      "price": 65744.84,
+      "at": 1784719826,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 55,
+          "reason": "Risk easing, but elevated XRP price and soft ETH add contagion risk"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 55,
+          "reason": "Risk trending down (63->60). XRP is large-cap with solid liquidity; ETH weakness adds mild contagion."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 72,
+          "reason": "Price extremely high, market trend uncertain, historical risk declining."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 65,
+          "reason": "High XRP price & rising risk trend; market contagion risk due to unclear BTC/ETH momentum"
+        }
+      ]
+    },
+    {
+      "score": 61,
+      "price": 65776.56,
+      "at": 1784720186,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 64,
+          "reason": "Price outlier and soft ETH lift risk; history flat-to-up; XRP liquid"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 59,
+          "reason": "XRP price feed anomalous ($65k); BTC data missing, ETH weak. Risk stable ~60, large-cap liquidity moderates."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 58,
+          "reason": "XRP price extremely high; historical scores stable, slight uptick; ETH low suggests moderate market stress."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 63,
+          "reason": "High XRP price & rising risk trend; market contagion risk due to ETH weakness"
+        }
+      ]
+    },
+    {
+      "score": 61,
+      "price": 65776.53,
+      "at": 1784720546,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 62,
+          "reason": "Risk stable near 61; abnormal XRP price and ETH softness raise contagion risk"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 59,
+          "reason": "XRP price feed anomalous ($65k); BTC data missing, ETH weak. Risk stable ~60, large-cap liquidity moderates."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 58,
+          "reason": "XRP price high, ETH stable; trend flat; no BTC data; moderate systematic risk."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 65,
+          "reason": "High XRP price & rising risk trend; market contagion risk due to uncertain BTC/ETH"
+        }
+      ]
+    },
+    {
+      "score": 65,
+      "price": 65752.38,
+      "at": 1784720906,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 61,
+          "reason": "Flat recent risk; ETH pressure raises contagion, XRP liquid but volatile."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 59,
+          "reason": "XRP price feed anomalous ($65k); BTC data missing, ETH weak. Risk stable ~60, large-cap liquidity moderates."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 80,
+          "reason": "Extreme XRP price likely data error; high market and volatility risk; stable trend but no BTC data."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 60,
+          "reason": "High XRP price & stable trend, but BTC missing raises market risk slightly"
+        }
+      ]
+    },
+    {
+      "score": 66,
+      "price": 65736.29,
+      "at": 1784721266,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 70,
+          "reason": "Risk rising; abnormal XRP price and market contagion elevate collateral risk"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 65,
+          "reason": "Risk trending up (60->65); XRP price feed looks anomalous, weak ETH adds contagion risk"
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 65,
+          "reason": "XRP price extremely high; historical risk trend up; ETH moderate but no BTC; elevated market risk."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 63,
+          "reason": "High XRP price & rising risk trend; market contagion risk due to ETH weakness"
+        }
+      ]
+    },
+    {
+      "score": 66,
+      "price": 65760.27,
+      "at": 1784721626,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 63,
+          "reason": "Risk rising; anomalous XRP price and weak ETH/unknown BTC add contagion."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 66,
+          "reason": "Rising risk trend (62->66); ETH weakness signals broad market pressure, elevating XRP contagion risk"
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 72,
+          "reason": "XRP price extremely high vs typical; ETH stable but BTC missing; risk scores rising recently."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 63,
+          "reason": "Market risk up due to rising trend and BTC/ETH pressure"
+        }
+      ]
+    }
+  ],
+  "ETH": [
+    {
+      "score": 65,
+      "price": 1922.806,
+      "at": 1784714786,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 65,
+          "reason": "Extreme XRP print; BTC steady, but market/oracle risk elevated"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 63,
+          "reason": "XRP price feed appears anomalous ($1922 vs typical range); ETH data missing raises contagion uncertainty. BTC stable but"
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 78,
+          "reason": "XRP price extremely high indicates overvaluation; BTC stable but ETH missing; high volatility from price spike."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 55,
+          "reason": "XRP high correlation with BTC; market risk elevated due to macro crypto downturn"
+        }
+      ]
+    },
+    {
+      "score": 66,
+      "price": 1922.331,
+      "at": 1784715146,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 72,
+          "reason": "XRP price is extreme; BTC not stressed, but valuation outlier lifts risk"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 63,
+          "reason": "XRP price feed ($1922) appears anomalous vs market; BTC stable but ETH data missing raises contagion uncertainty."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 73,
+          "reason": "XRP price extremely high ($1922), potential anomaly; high volatility risk; BTC stable but XRP isolated."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 55,
+          "reason": "XRP price high but BTC weak; market risk elevated due to crypto-wide pressure."
+        }
+      ]
+    },
+    {
+      "score": 71,
+      "price": 1921.858,
+      "at": 1784715506,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 66,
+          "reason": "Risk edging up; abnormal XRP price and crypto contagion despite BTC resilience"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 67,
+          "reason": "Risk trending up (65->66->67); XRP as major asset holds liquidity, but abnormal price feed and broader market contagion "
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 85,
+          "reason": "XRP price unusually high at $1921.86; extreme level suggests high market/volatility risk; slight uptrend from 65 to 66."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 65,
+          "reason": "Market risk up due to BTC pressure; recent uptick in marketRisk trend observed"
+        }
+      ]
+    },
+    {
+      "score": 73,
+      "price": 1922.554,
+      "at": 1784715866,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 70,
+          "reason": "Risk rising; anomalous XRP price and BTC contagion keep collateral risk high"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 73,
+          "reason": "Risk trending up (65->71). Anomalous XRP price feed and missing ETH data raise oracle concern; BTC contagion moderate."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 80,
+          "reason": "XRP price anomaly high at $1922; historical risk rising; BTC stable but ETH missing."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 68,
+          "reason": "Market risk up due to BTC pressure and rising risk trend"
+        }
+      ]
+    },
+    {
+      "score": 74,
+      "price": 1923.713,
+      "at": 1784716226,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 70,
+          "reason": "Risk rising; XRP liquid, but elevated price and BTC contagion keep risk high."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 75,
+          "reason": "Risk trending up (65->73). Anomalous XRP price feed and missing ETH data raise oracle/contagion concerns."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 82,
+          "reason": "High price anomaly for XRP; historical risk scores rising; consider market safety."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 68,
+          "reason": "Rising risk trend; high BTC price may signal market stress, increasing contagion risk"
+        }
+      ]
+    },
+    {
+      "score": 72,
+      "price": 1924.178,
+      "at": 1784716586,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 74,
+          "reason": "Risk rising; elevated XRP and BTC-linked contagion lift collateral risk"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 72,
+          "reason": "Rising risk trend (65->74). XRP price anomalously high; ETH feed missing. BTC stable limits contagion, but large-cap liq"
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 75,
+          "reason": "Price high amplifying volatility; rising trend in risk scores; BTC solid but XRP elevated."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 68,
+          "reason": "Market risk elevated due to rising trend and BTC correlation"
+        }
+      ]
+    },
+    {
+      "score": 68,
+      "price": 1924.405,
+      "at": 1784716946,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 71,
+          "reason": "Elevated price; trend remains high with slight easing; BTC contagion moderate"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 70,
+          "reason": "Risk trend slightly cooling from peak 74 to 72; XRP large-cap aids liquidity, but BTC softness adds contagion risk"
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 45,
+          "reason": "Price high but BTC stable; recent risk score trend slightly down, caution on valuation."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 68,
+          "reason": "Market risk elevated due to high BTC correlation and rising trend in recent risk scores"
+        }
+      ]
+    },
+    {
+      "score": 59,
+      "price": 1924.616,
+      "at": 1784717306,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 58,
+          "reason": "Risk trend easing; BTC backdrop stable, XRP liquid but still volatile"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 60,
+          "reason": "Risk trending down (74->68). XRP major-cap with solid liquidity; ETH feed missing, BTC stable limits contagion."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 50,
+          "reason": "XRP price high but trend declining; moderate market risk; low liquidity risk."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 68,
+          "reason": "Market risk elevated due to high price and BTC correlation; recent downtrend in risk scores"
+        }
+      ]
+    },
+    {
+      "score": 60,
+      "price": 1922.252,
+      "at": 1784717666,
+      "agreement": "low",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 54,
+          "reason": "Risk trend falling; BTC not stressed, but elevated XRP price/vol risk."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 55,
+          "reason": "Risk trending down (73->59). XRP large-cap with solid liquidity; BTC stable limits contagion."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 30,
+          "reason": "Price high but risk trend improving; BTC stable; liquidity strong."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 68,
+          "reason": "Market risk elevated due to BTC pressure and rising trend in recent risk scores"
+        }
+      ]
+    },
+    {
+      "score": 61,
+      "price": 1922.244,
+      "at": 1784718026,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 53,
+          "reason": "Risk trending down; BTC firm limits contagion, XRP liquid but volatile"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 56,
+          "reason": "Risk trending down (74->60) but stabilizing; XRP large-cap liquid, BTC steady limits contagion."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 38,
+          "reason": "XRP price high but stable; BTC stable; risk trend declining but recent uptick."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 68,
+          "reason": "Market risk elevated due to high price and BTC correlation; risk trend rising"
+        }
+      ]
+    },
+    {
+      "score": 63,
+      "price": 1921.992,
+      "at": 1784718386,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 54,
+          "reason": "Risk mildly rising; BTC stable limits contagion, XRP liquid but volatile."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 57,
+          "reason": "Risk trend easing from 72 to 61. XRP is large-cap with solid liquidity; stable BTC limits contagion."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 76,
+          "reason": "Price extremely high, historical risk stable, BTC neutral but ETH missing, high volatility likely."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 63,
+          "reason": "Market risk up due to BTC pressure and rising risk trend"
+        }
+      ]
+    },
+    {
+      "score": 57,
+      "price": 1921.953,
+      "at": 1784718746,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 62,
+          "reason": "Risk rising mildly; BTC stable, XRP liquid but volatile collateral."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 58,
+          "reason": "XRP large-cap with decent liquidity; risk trend flat-to-slightly-up, mild BTC-driven contagion noted"
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 45,
+          "reason": "Rising trend from historical scores, XRP high price but market stable, moderate volatility."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 63,
+          "reason": "Market risk up due to BTC pressure and rising risk trend"
+        }
+      ]
+    },
+    {
+      "score": 61,
+      "price": 1922.883,
+      "at": 1784719106,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 51,
+          "reason": "Risk easing from history; BTC stable limits contagion, XRP remains volatile"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 58,
+          "reason": "XRP large-cap with decent liquidity; risk trend flat-to-slightly-up, mild BTC-driven contagion noted"
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 70,
+          "reason": "High XRP price, moderate market, recent risk decline, cross-asset stable."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 63,
+          "reason": "Market risk up due to BTC pressure and rising risk trend"
+        }
+      ]
+    },
+    {
+      "score": 60,
+      "price": 1921.698,
+      "at": 1784719466,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 57,
+          "reason": "Risk mildly rising; BTC firm limits contagion; XRP liquid but volatile."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 59,
+          "reason": "XRP large-cap with decent liquidity; risk stable near 60, ETH data missing, BTC steady limits contagion."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 60,
+          "reason": "XRP price very high, but market stable; trend flat; liquidity good."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 63,
+          "reason": "Market risk up slightly; BTC high but volatile, trend rising"
+        }
+      ]
+    },
+    {
+      "score": 56,
+      "price": 1920.047,
+      "at": 1784719826,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 58,
+          "reason": "Stable trend; BTC contagion limited, XRP liquid but volatile."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 57,
+          "reason": "Risk trend stable/slightly down. XRP large-cap with decent liquidity; BTC steady limits contagion. Anomalous price feed "
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 45,
+          "reason": "XRP price high but stable; BTC moderate; risk trend flat; systematic risk mild."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 63,
+          "reason": "Market pressure increases risk; stable trend but BTC high adds contagion risk"
+        }
+      ]
+    },
+    {
+      "score": 55,
+      "price": 1921.411,
+      "at": 1784720186,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 52,
+          "reason": "Risk easing; BTC firm limits contagion, but XRP volatility remains material."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 55,
+          "reason": "Risk trending down (63->56); XRP large-cap with solid liquidity, but crypto-wide contagion keeps market risk elevated"
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 32,
+          "reason": "XRP price stable; recent score trend declining; BTC market neutral; low systemic risk."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 60,
+          "reason": "Market risk up due to BTC pressure and rising trend in recent risk scores"
+        }
+      ]
+    },
+    {
+      "score": 58,
+      "price": 1920.936,
+      "at": 1784720546,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 50,
+          "reason": "Risk trending down; BTC backdrop supportive, XRP liquid but still volatile"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 53,
+          "reason": "Risk trending down from 61 to 55; XRP is a major liquid asset. BTC stable, mild systemic pressure."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 70,
+          "reason": "XRP price extremely high vs usual, mild BTC market, risk score trend declining but elevated volatility."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 60,
+          "reason": "Market risk elevated due to high BTC price and rising trend in recent risk scores"
+        }
+      ]
+    },
+    {
+      "score": 57,
+      "price": 1920.227,
+      "at": 1784720906,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 54,
+          "reason": "Recent risk uptick; BTC steady, XRP liquid but volatile"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 55,
+          "reason": "XRP is a major-cap asset with decent liquidity; risk trending down but slight uptick, BTC steady limits contagion."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 58,
+          "reason": "Price at extreme high; recent risk scores rising; BTC market stable but XRP volatile."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 60,
+          "reason": "Market risk up slightly; BTC high but marketRisk trend rising from recent scores"
+        }
+      ]
+    },
+    {
+      "score": 51,
+      "price": 1919.754,
+      "at": 1784721266,
+      "agreement": "moderate",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 52,
+          "reason": "Stable to slightly lower trend; BTC not stressed, XRP liquid but volatile"
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 55,
+          "reason": "XRP large-cap collateral; risk trend flat-to-slightly-down. BTC stable limits contagion, ETH data missing."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 38,
+          "reason": "XRP price high, overall stable, BTC neutral; no clear trend."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 58,
+          "reason": "Market risk up slightly; BTC high but XRP trend stable, mild contagion risk"
+        }
+      ]
+    },
+    {
+      "score": 51,
+      "price": 1920.448,
+      "at": 1784721626,
+      "agreement": "high",
+      "sources": [
+        {
+          "provider": "GPT-5.5",
+          "model": "GPT-5.5",
+          "score": 43,
+          "reason": "Risk easing; BTC stable, XRP liquid but volatile collateral."
+        },
+        {
+          "provider": "Claude Opus 4.8",
+          "model": "Claude-Opus-4.8",
+          "score": 52,
+          "reason": "Risk trending down (57->51). XRP large-cap with solid liquidity; BTC stable limits contagion."
+        },
+        {
+          "provider": "DeepSeek",
+          "model": "deepseek-v4-flash",
+          "score": 52,
+          "reason": "Price high but trend declining; BTC stable; moderate systemic risk."
+        },
+        {
+          "provider": "Qwen3-235B",
+          "model": "Qwen3-235B-A22B",
+          "score": 58,
+          "reason": "Market risk up slightly; BTC high but XRP trend stable, minor contagion risk"
+        }
+      ]
+    }
+  ]
+}

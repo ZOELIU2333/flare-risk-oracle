@@ -16,13 +16,27 @@ const MAX_HISTORY = 20;
 // 轻量持久化：各资产历史落盘（重启不丢）
 const DATA_DIR = path.join(__dirname, "data");
 const HISTORY_FILE = path.join(DATA_DIR, "history.json"); // { XRP:[...], BTC:[...], ETH:[...] }
+const SEED_FILE = path.join(__dirname, "seed-history.json"); // 入仓的种子历史，线上冷启动/无运行时数据时回退加载
+function loadSeed() {
+  try {
+    const s = JSON.parse(fs.readFileSync(SEED_FILE, "utf8"));
+    return { XRP: s.XRP || [], BTC: s.BTC || [], ETH: s.ETH || [] };
+  } catch {
+    return { XRP: [], BTC: [], ETH: [] };
+  }
+}
 function loadHistory() {
   try {
     const raw = JSON.parse(fs.readFileSync(HISTORY_FILE, "utf8"));
-    if (Array.isArray(raw)) return { XRP: raw, BTC: [], ETH: [] }; // 兼容旧格式(纯数组=XRP)
-    return { XRP: raw.XRP || [], BTC: raw.BTC || [], ETH: raw.ETH || [] };
+    const h = Array.isArray(raw)
+      ? { XRP: raw, BTC: [], ETH: [] } // 兼容旧格式(纯数组=XRP)
+      : { XRP: raw.XRP || [], BTC: raw.BTC || [], ETH: raw.ETH || [] };
+    // 运行时数据为空的资产用种子补上（趋势图冷启动即丰满）
+    const seed = loadSeed();
+    for (const a of ["XRP", "BTC", "ETH"]) if (!h[a].length) h[a] = seed[a];
+    return h;
   } catch {
-    return { XRP: [], BTC: [], ETH: [] };
+    return loadSeed();
   }
 }
 function saveHistory(hist) {

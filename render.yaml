@@ -11,10 +11,19 @@ services:
         value: "20"
       - key: PRIVATE_KEY
         sync: false
-      - key: MOONSHOT_API_KEY
+      # 京东云中转：GPT-5.5(OpenAI 格式) + Claude Opus 4.8(Anthropic 格式) + Qwen3 共用一个 key
+      - key: JDCLOUD_API_KEY
         sync: false
-      - key: MOONSHOT_MODEL
-        value: kimi-k3
+      - key: JDCLOUD_BASE_URL
+        value: https://modelservice.jdcloud.com/v1
+      - key: JDCLOUD_ANTHROPIC_URL
+        value: https://modelservice.jdcloud.com/anthropic
+      - key: GPT_MODEL
+        value: GPT-5.5
+      - key: OPUS_MODEL
+        value: Claude-Opus-4.8
+      - key: QWEN_MODEL
+        value: Qwen3-235B-A22B
       - key: DEEPSEEK_API_KEY
         sync: false
       - key: DEEPSEEK_MODEL
