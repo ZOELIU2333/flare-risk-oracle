@@ -1,5 +1,7 @@
 (() => {
-  const DURATION = 97;
+  const INTRO_DURATION = 1.6;
+  const STORY_RUNTIME = 97;
+  const DURATION = STORY_RUNTIME + INTRO_DURATION;
   const STORY_DURATION = 108;
   const film = document.getElementById("film");
   const root = document.documentElement;
@@ -75,6 +77,18 @@
     set("--topbar-show", smooth(progress(t, 12.8, 14.4)) * (1 - smooth(progress(t, 96.2, 98.0))));
   }
 
+  function updateIntro(t) {
+    const visible = t < INTRO_DURATION;
+    set("--intro-visibility", visible ? "visible" : "hidden");
+    set("--intro-opacity", 1 - smooth(progress(t, 1.22, INTRO_DURATION)));
+    set("--intro-grid", ease(progress(t, 0.05, 0.8)));
+    set("--intro-brand", ease(progress(t, 0.18, 0.64)));
+    set("--intro-kicker", ease(progress(t, 0.42, 0.92)));
+    set("--intro-title", ease(progress(t, 0.56, 1.08)));
+    set("--intro-flow", ease(progress(t, 0.82, 1.34)));
+    set("--intro-scan", ease(progress(t, 0.72, 1.58)));
+  }
+
   function updateHook(t) {
     set("--terminal-show", ease(progress(t, 0.4, 1.6)));
     set("--line-progress", ease(progress(t, 0.8, 4.5)));
@@ -91,15 +105,21 @@
     set("--caret", typed < headline.length ? (Math.floor(t * 3) % 2 ? 1 : 0.15) : 0);
 
     const cursorEnter = ease(progress(t, 20.4, 21.1));
+    const demoScene = document.querySelector(".scene-demo");
+    const analyzeButton = document.querySelector(".analyze-button");
+    const sceneRect = demoScene.getBoundingClientRect();
+    const buttonRect = analyzeButton.getBoundingClientRect();
+    const targetX = buttonRect.left - sceneRect.left + buttonRect.width / 2 - 3;
+    const targetY = buttonRect.top - sceneRect.top + buttonRect.height / 2 - 3;
     let cursorX = 1700;
     let cursorY = 890;
     if (t >= 20.4 && t < 22.7) {
       const p = ease(progress(t, 20.4, 22.7));
-      cursorX = 1700 + (450 - 1700) * p;
-      cursorY = 870 + (725 - 870) * p;
+      cursorX = 1700 + (targetX - 1700) * p;
+      cursorY = 870 + (targetY - 870) * p;
     } else if (t >= 22.7) {
-      cursorX = 450;
-      cursorY = 725;
+      cursorX = targetX;
+      cursorY = targetY;
     }
     set("--cursor-x", `${cursorX}px`);
     set("--cursor-y", `${cursorY}px`);
@@ -203,7 +223,8 @@
   function render(t) {
     const time = clamp(t, 0, DURATION);
     set("--film-progress", time / DURATION);
-    const storyTime = time * (STORY_DURATION / DURATION);
+    const storyFrameTime = clamp(time - INTRO_DURATION, 0, STORY_RUNTIME);
+    const storyTime = storyFrameTime * (STORY_DURATION / STORY_RUNTIME);
     set("--micro", ((Math.sin(storyTime * 3.1) + 1) / 2).toFixed(4));
     set("--micro-alt", ((Math.sin(storyTime * 2.2 + 1.7) + 1) / 2).toFixed(4));
     set("--ring-angle", `${(storyTime * 11.5).toFixed(2)}deg`);
@@ -216,6 +237,7 @@
     set("--phase-models", storyTime >= 24 && storyTime < 52 ? 1 : 0.35);
     set("--phase-proof", storyTime >= 52 && storyTime < 82 ? 1 : 0.35);
     set("--phase-policy", storyTime >= 82 ? 1 : 0.35);
+    updateIntro(time);
     updateScenes(storyTime);
     updateHook(storyTime);
     updateDemo(storyTime);
@@ -224,7 +246,7 @@
     updateProof(storyTime);
     updateProtocols(storyTime);
     updateOutro(storyTime);
-    updateCaption(time);
+    updateCaption(storyFrameTime);
     document.getElementById("timecode").textContent = `${String(Math.floor(time / 60)).padStart(2, "0")}:${String(Math.floor(time % 60)).padStart(2, "0")}`;
     film.dataset.time = time.toFixed(3);
   }

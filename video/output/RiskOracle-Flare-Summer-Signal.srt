@@ -1,83 +1,83 @@
 1
-00:00:01,050 --> 00:00:02,832
+00:00:02,650 --> 00:00:04,432
 The XRP price hasn't moved.
 
 2
-00:00:02,832 --> 00:00:04,474
+00:00:04,432 --> 00:00:06,074
 But the risk already has.
 
 3
-00:00:04,474 --> 00:00:08,764
+00:00:06,074 --> 00:00:10,364
 Most DeFi collateral controls wait for price data to reveal a crisis.
 
 4
-00:00:08,764 --> 00:00:11,709
+00:00:10,364 --> 00:00:13,309
 By then, lending markets may already be exposed.
 
 5
-00:00:11,709 --> 00:00:15,459
+00:00:13,309 --> 00:00:17,059
 This is RiskOracle, built for interoperable assets on Flare.
 
 6
-00:00:15,459 --> 00:00:19,050
+00:00:17,059 --> 00:00:20,650
 Watch the same XRP price as a regulatory shock arrives.
 
 7
-00:00:19,050 --> 00:00:21,095
+00:00:20,650 --> 00:00:22,695
 A price-only oracle still reads low.
 
 8
-00:00:21,095 --> 00:00:24,591
+00:00:22,695 --> 00:00:26,191
 RiskOracle sends the headline to four independent models.
 
 9
-00:00:24,591 --> 00:00:32,430
+00:00:26,191 --> 00:00:34,030
 GPT-5.5 scores 92, Claude Opus 85, DeepSeek 95, and Qwen3 85.
 
 10
-00:00:32,430 --> 00:00:36,137
+00:00:34,030 --> 00:00:37,737
 Consensus: 89, before the market reprices.
 
 11
-00:00:36,137 --> 00:00:38,531
+00:00:37,737 --> 00:00:40,131
 The models never see one another's answers.
 
 12
-00:00:38,531 --> 00:00:46,052
+00:00:40,131 --> 00:00:47,652
 RiskOracle exposes their spread and applies divergence-aware consensus, making uncertainty visible instead of hiding it.
 
 13
-00:00:46,052 --> 00:00:49,802
+00:00:47,652 --> 00:00:51,402
 The pipeline begins with Flare FTSOv2 market state.
 
 14
-00:00:49,802 --> 00:00:54,262
+00:00:51,402 --> 00:00:55,862
 AI adds event, liquidity, volatility, and contagion context.
 
 15
-00:00:54,262 --> 00:01:02,504
+00:00:55,862 --> 00:01:04,104
 Because model output is non-deterministic, RiskOracle freezes the result into deterministic JSON for FDC Web2Json attestation.
 
 16
-00:01:02,504 --> 00:01:10,703
+00:01:04,104 --> 00:01:12,303
 Here is the proof: deployed Coston2 contracts, immutable RiskUpdated events, and a successful end-to-end FDC transaction.
 
 17
-00:01:10,703 --> 00:01:16,752
+00:01:12,303 --> 00:01:18,352
 Continuous demo updates use a lightweight signer; the full FDC path is already proven on-chain.
 
 18
-00:01:16,752 --> 00:01:23,669
+00:01:18,352 --> 00:01:25,269
 At risk 95, the FXRP lending example suspends new borrowing, and the insurance pool stops new underwriting.
 
 19
-00:01:23,669 --> 00:01:26,624
+00:01:25,269 --> 00:01:28,224
 One signal; policy remains with each protocol.
 
 20
-00:01:26,624 --> 00:01:29,103
+00:01:28,224 --> 00:01:30,703
 Built from scratch during Flare Summer Signal.
 
 21
-00:01:29,103 --> 00:01:34,802
+00:01:30,703 --> 00:01:36,402
 RiskOracle: verifiable risk intelligence for interoperable assets, before price reacts.
