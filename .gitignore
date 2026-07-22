@@ -24,5 +24,13 @@ docs/VIDEO_SCRIPT.md
 .claude/
 .superpowers/
 
+# Codex isolated worktrees
+.worktrees/
+
+# Video production intermediates
+video/work/
+video/output/*.webm
+video/output/*.mov
+
 # 系统
 .DS_Store
