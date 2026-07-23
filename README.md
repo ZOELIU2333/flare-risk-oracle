@@ -23,6 +23,12 @@ FXRP or other interoperable assets as collateral.
 
 <br><br>
 
+<img src="docs/img/00-signal-cover.png" alt="RiskOracle flow from an event through four independent AI assessments to verified on-chain proof" width="100%">
+
+<sub>Event risk → four independent assessments → verified consensus → on-chain proof</sub>
+
+<br><br>
+
 <a href="https://flare-risk-oracle.onrender.com/"><img src="docs/img/01-hero.png" alt="RiskOracle live dashboard showing XRP risk, four AI models, and Coston2 status" width="100%"></a>
 
 <sub>Live product: three FTSO assets · four AI models · FDC proof · two protocol consumers</sub>
