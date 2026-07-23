@@ -86,6 +86,7 @@ about being in early public beta and not yet having material user traction.
 - [x] Sponsor technology selection reviewed: use `Other / Custom Stack`.
 - [x] Project submitted.
 - [x] Initial Proof of Usefulness score received: `+65`.
+- [x] Monthly prize and participant-benefit eligibility confirmed by email.
 
 ### Next
 
@@ -188,3 +189,4 @@ would not be competitive.
 | 2026-07-23 | Flare Summer Signal | Product, README, video, contracts, and FDC proof ready; final contact step blocked by Telegram registration. |
 | 2026-07-23 | HackerNoon Proof of Usefulness | Submission form progressed to the final contact step. |
 | 2026-07-23 | HackerNoon Proof of Usefulness | Project submitted with an initial Proof of Usefulness score of +65; no sponsor technology prize pools selected. |
+| 2026-07-23 | HackerNoon Proof of Usefulness | Confirmation email received: eligible for monthly prizes and participant benefits. |
