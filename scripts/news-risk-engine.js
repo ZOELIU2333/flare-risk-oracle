@@ -1,7 +1,7 @@
-// M4-② 杀手锏：AI 读突发新闻文本 → 抢先风控（已重构为策略框架）
-// 核心卖点：传统清算只看价格（新闻刚出、价格没跌时它毫无反应）；
-// AI 读懂非结构化新闻文本，能在价格反应前就预警风险 —— 规则/传统预言机做不到。
-// 用法：node scripts/news-risk-engine.js "你的新闻文本"
+// M4-② Killer feature: AI reads breaking-news text → proactive risk control (refactored into a strategy framework)
+// Core value: traditional liquidation only watches price (it does nothing when news just broke but price hasn't dropped yet);
+// AI comprehends unstructured news text and can flag risk before price reacts — something rule-based / traditional oracles can't do.
+// Usage: node scripts/news-risk-engine.js "your news text"
 const { analyze } = require("../lib/risk-analyzer");
 const { updateSnapshot } = require("../lib/snapshot");
 const newsStrategy = require("../risk-strategies/news-analysis");
@@ -11,22 +11,22 @@ const DEFAULT_NEWS =
 
 async function main() {
   const news = process.argv[2] || DEFAULT_NEWS;
-  const price = 1.13; // 演示：价格还没跌
+  const price = 1.13; // Demo: price hasn't dropped yet
 
-  console.log("场景：价格 $" + price + " 平稳，但一条突发新闻刚刚出现\n");
-  console.log("突发新闻:\n  " + news + "\n");
-  console.log("传统清算引擎（只看价格）→ 价格没跌，风险判定: 低（无反应）");
+  console.log("Scenario: price $" + price + " is stable, but a breaking news headline just appeared\n");
+  console.log("Breaking news:\n  " + news + "\n");
+  console.log("Traditional liquidation engine (price-only) → price hasn't dropped, risk verdict: low (no reaction)");
 
-  console.log("\nAI 风控引擎读新闻中 (策略: " + newsStrategy.name + ")...");
+  console.log("\nAI risk engine reading the news (strategy: " + newsStrategy.name + ")...");
   const risk = await analyze(newsStrategy, { news, price });
-  console.log("AI 判定 → 风险分:", risk.score, "| 理由:", risk.reason);
+  console.log("AI verdict → risk score:", risk.score, "| reason:", risk.reason);
 
-  console.log("\n更新链上风险快照...");
+  console.log("\nUpdating the on-chain risk snapshot...");
   const snapshot = await updateSnapshot(risk);
-  console.log("快照已更新:", JSON.stringify(snapshot));
+  console.log("Snapshot updated:", JSON.stringify(snapshot));
 
-  console.log("\n✅ 杀手锏演示：AI 读懂新闻文本，在价格反应前就把风险拉高。");
-  console.log("   接着跑 MiniLendingDemo 会看到借贷协议因此进入保护（传统清算此刻还在放贷）。");
+  console.log("\n✅ Killer-feature demo: AI comprehends the news text and raises risk before price reacts.");
+  console.log("   Running MiniLendingDemo next shows the lending protocol entering protection mode as a result (traditional liquidation is still lending at this point).");
 }
 
 main().catch((e) => {

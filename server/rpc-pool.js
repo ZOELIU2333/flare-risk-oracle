@@ -1,12 +1,12 @@
-// RPC 池 + 自动降级：多个 Coston2 端点，一个挂了自动换下一个，解决公共 RPC 限额/不稳。
+// RPC pool + automatic fallback: multiple Coston2 endpoints; if one fails, automatically switch to the next. Handles public-RPC rate limits and instability.
 const { ethers } = require("ethers");
 
-// 读操作用的 RPC 池（官方 + Ankr + 其他公共）；顺序 = 优先级
+// RPC pool for read operations (official + Ankr + other public endpoints); order = priority
 const READ_RPCS = [
   "https://coston2-api.flare.network/ext/C/rpc",
   "https://rpc.ankr.com/flare_coston2",
 ];
-// getLogs 专用池（官方的 getLogs 不稳，Ankr 优先）
+// Dedicated pool for getLogs (the official getLogs is unstable, so Ankr takes priority)
 const LOGS_RPCS = [
   "https://rpc.ankr.com/flare_coston2",
   "https://coston2-api.flare.network/ext/C/rpc",
@@ -16,7 +16,7 @@ function makeProvider(url) {
   return new ethers.JsonRpcProvider(url, undefined, { staticNetwork: true });
 }
 
-// 在一组 RPC 上依次尝试 fn，直到成功；全失败才抛
+// Try fn on each RPC in turn until one succeeds; only throw if all fail
 async function withFallback(rpcs, fn) {
   let lastErr;
   for (const url of rpcs) {

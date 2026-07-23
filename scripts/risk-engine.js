@@ -1,6 +1,6 @@
-// M3/M4 市场风控引擎（已重构为策略框架）
-// 流程：拉 XRP 实时数据 → 用 market-analysis 策略调 Kimi → 更新 npoint 快照(FDC 数据源)
-// 个人项目：公开大模型 API、公开数据源、全新代码。不涉及任何公司资产。
+// M3/M4 market risk engine (refactored into a strategy framework)
+// Flow: fetch live XRP data → score with Kimi via the market-analysis strategy → update the npoint snapshot (FDC data source)
+// Personal project: public LLM APIs, public data sources, all-new code. Involves no company assets.
 const { analyze } = require("../lib/risk-analyzer");
 const { updateSnapshot } = require("../lib/snapshot");
 const marketStrategy = require("../risk-strategies/market-analysis");
@@ -19,27 +19,27 @@ async function fetchMarketData() {
         volume24h: d.ripple.usd_24h_vol,
       };
     } catch (e) {
-      if (attempt === 3) throw new Error(`CoinGecko 失败(重试后): ${e.message}`);
-      console.log("   CoinGecko 超时，重试...");
+      if (attempt === 3) throw new Error(`CoinGecko failed (after retries): ${e.message}`);
+      console.log("   CoinGecko timed out, retrying...");
     }
   }
 }
 
 async function main() {
-  console.log("① 拉取 XRP 市场数据...");
+  console.log("① Fetching XRP market data...");
   const market = await fetchMarketData();
-  console.log("   价格 $" + market.price + " | 24h " + market.change24h.toFixed(2) + "%");
+  console.log("   price $" + market.price + " | 24h " + market.change24h.toFixed(2) + "%");
 
-  console.log("② Kimi 多维分析风险 (策略: " + marketStrategy.name + ")...");
+  console.log("② Kimi multi-dimensional risk analysis (strategy: " + marketStrategy.name + ")...");
   const risk = await analyze(marketStrategy, market);
-  console.log("   市场风险:", risk.dimensions.marketRisk, "| 波动风险:", risk.dimensions.volatilityRisk, "| 流动性风险:", risk.dimensions.liquidityRisk);
-  console.log("   综合风险分:", risk.score, "| 理由:", risk.reason);
+  console.log("   market risk:", risk.dimensions.marketRisk, "| volatility risk:", risk.dimensions.volatilityRisk, "| liquidity risk:", risk.dimensions.liquidityRisk);
+  console.log("   composite risk score:", risk.score, "| reason:", risk.reason);
 
-  console.log("③ 更新链下快照(FDC 数据源)...");
+  console.log("③ Updating the off-chain snapshot (FDC data source)...");
   const snapshot = await updateSnapshot(risk);
-  console.log("   快照已更新:", JSON.stringify(snapshot));
+  console.log("   Snapshot updated:", JSON.stringify(snapshot));
 
-  console.log("\n✅ 市场风控引擎跑完。下一步跑 FDC 上链脚本把这个快照可信上链：");
+  console.log("\n✅ Market risk engine finished. Next, run the FDC on-chain script to attest this snapshot on-chain:");
   console.log("   cd _reference-starter && yarn hardhat run scripts/fdcExample/RiskWeb2Json.ts --network coston2");
 }
 

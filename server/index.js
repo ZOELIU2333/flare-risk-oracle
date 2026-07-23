@@ -1,5 +1,5 @@
-// AI Risk Oracle 后端 API 服务（三资产 · 多AI共识 · 缓存 · 自动上链 · 链上历史）
-// key 安全留后端；前端只调本服务。后台定时对 XRP/BTC/ETH 各跑多AI共识并缓存，前端读缓存秒回。
+// AI Risk Oracle backend API service (three assets · multi-AI consensus · cache · auto on-chain push · on-chain history)
+// Keys stay safely on the backend; the frontend only calls this service. A background job periodically runs multi-AI consensus for XRP/BTC/ETH and caches the results, so the frontend reads the cache and responds instantly.
 require("dotenv").config();
 const express = require("express");
 const fs = require("fs");
@@ -14,10 +14,10 @@ const { mountVideoRoutes } = require("./video-stream");
 const ASSETS = ["XRP", "BTC", "ETH"];
 const MAX_HISTORY = 20;
 
-// 轻量持久化：各资产历史落盘（重启不丢）
+// Lightweight persistence: each asset's history is written to disk (survives restarts)
 const DATA_DIR = path.join(__dirname, "data");
 const HISTORY_FILE = path.join(DATA_DIR, "history.json"); // { XRP:[...], BTC:[...], ETH:[...] }
-const SEED_FILE = path.join(__dirname, "seed-history.json"); // 入仓的种子历史，线上冷启动/无运行时数据时回退加载
+const SEED_FILE = path.join(__dirname, "seed-history.json"); // committed seed history, loaded as fallback on cold start / when no runtime data exists
 function loadSeed() {
   try {
     const s = JSON.parse(fs.readFileSync(SEED_FILE, "utf8"));
@@ -30,9 +30,9 @@ function loadHistory() {
   try {
     const raw = JSON.parse(fs.readFileSync(HISTORY_FILE, "utf8"));
     const h = Array.isArray(raw)
-      ? { XRP: raw, BTC: [], ETH: [] } // 兼容旧格式(纯数组=XRP)
+      ? { XRP: raw, BTC: [], ETH: [] } // backward-compatible with the old format (plain array = XRP)
       : { XRP: raw.XRP || [], BTC: raw.BTC || [], ETH: raw.ETH || [] };
-    // 运行时数据为空的资产用种子补上（趋势图冷启动即丰满）
+    // For assets with no runtime data, fill in from the seed (so the trend chart is populated right after a cold start)
     const seed = loadSeed();
     for (const a of ["XRP", "BTC", "ETH"]) if (!h[a].length) h[a] = seed[a];
     return h;
@@ -58,26 +58,26 @@ app.use((req, res, next) => {
   if (req.method === "OPTIONS") return res.sendStatus(200);
   next();
 });
-// 同源托管前端静态文件（部署时一个服务同时给页面 + API）
+// Serve the frontend static files from the same origin (in deployment, one service serves both the page and the API)
 app.use(express.static(path.join(__dirname, "..", "frontend")));
 mountVideoRoutes(app);
 
-// 各资产的风险缓存 + 历史
+// Per-asset risk cache + history
 const riskCaches = { XRP: { status: "initializing", updatedAt: 0 }, BTC: { status: "initializing", updatedAt: 0 }, ETH: { status: "initializing", updatedAt: 0 } };
 let riskHistory = loadHistory();
 let refreshing = false;
 
-// 对单个资产跑一次多AI分析并更新缓存
+// Run one round of multi-AI analysis for a single asset and update its cache
 async function refreshAsset(symbol, mkt) {
   const price = mkt[symbol];
   const others = ASSETS.filter((a) => a !== symbol);
-  // 传入主资产价 + 其余资产作大盘上下文 + 该资产的趋势历史
+  // Pass the primary asset price + the other assets as market context + this asset's trend history
   const hist = riskHistory[symbol] || [];
   const trend = hist.slice(-5).map((h) => h.score);
   const ctx = { price, asset: symbol, trend };
   others.forEach((a) => { ctx[a.toLowerCase()] = mkt[a]; });
 
-  // 兜底：某 AI 这次失败时用该资产上次成功的该 AI 结果补上（保证面板总有两个 AI）
+  // Fallback: if an AI fails this round, reuse that asset's last successful result from the same AI (ensures the panel always shows two AIs)
   const lastSources = (riskCaches[symbol]?.sources) || [];
   const fallback = {};
   lastSources.forEach((s) => { fallback[s.provider] = s; });
@@ -108,11 +108,11 @@ async function refreshAsset(symbol, mkt) {
   };
   console.log(`[risk:${symbol}] score=${risk.score} agreement=${risk.agreement} (${risk.sources.map(s=>s.provider+':'+s.score).join(', ')})`);
 
-  // 仅主资产 XRP 自动上链（链上主推；BTC/ETH 展示分析但不都占用 gas）
+  // Only the primary asset XRP is pushed on-chain automatically (main on-chain feed; BTC/ETH are analyzed and displayed but do not each consume gas)
   if (symbol === "XRP") {
     pushRisk(risk.score, risk.reason)
       .then((res) => {
-        if (!res) return; // 未配置私钥，自动上链已跳过
+        if (!res) return; // no private key configured, auto on-chain push skipped
         riskCaches.XRP.onchain = { contract: res.contract, txHash: res.txHash, at: Math.floor(Date.now() / 1000) };
         console.log(`[onchain] pushed XRP score=${risk.score} tx=${res.txHash}`);
       })
@@ -120,7 +120,7 @@ async function refreshAsset(symbol, mkt) {
   }
 }
 
-// 后台刷新所有资产（串行，避免同时打爆 AI）
+// Background refresh of all assets (serial, to avoid overloading the AI at once)
 async function refreshAll() {
   if (refreshing) return;
   refreshing = true;
@@ -130,7 +130,7 @@ async function refreshAll() {
       const sym = ASSETS[i];
       try { await refreshAsset(sym, mkt); }
       catch (e) { console.error(`[risk:${sym}] failed:`, e.message); }
-      // 资产间隔：中转对 Claude 有每分钟 token 限流，错开到不同分钟窗口避免撞限流
+      // Gap between assets: the relay applies a per-minute token rate limit for Claude, so stagger into different minute windows to avoid hitting it
       if (i < ASSETS.length - 1) await new Promise((r) => setTimeout(r, 40000));
     }
     saveHistory(riskHistory);
@@ -141,13 +141,13 @@ async function refreshAll() {
 
 app.get("/api/health", (req, res) => res.json({ ok: true, assets: ASSETS }));
 
-// 风险：按资产返回缓存（?asset=XRP|BTC|ETH，默认 XRP）
+// Risk: return the cache for a given asset (?asset=XRP|BTC|ETH, defaults to XRP)
 app.get("/api/risk", (req, res) => {
   const asset = (req.query.asset || "XRP").toUpperCase();
   res.json(riskCaches[asset] || { status: "error", error: "unknown asset" });
 });
 
-// 所有资产的概览（顶部切换器/概览用）
+// Overview of all assets (used by the top switcher / overview)
 app.get("/api/overview", (req, res) => {
   res.json(ASSETS.map((a) => ({
     asset: a,
@@ -158,7 +158,7 @@ app.get("/api/overview", (req, res) => {
   })));
 });
 
-// 链上历史真相源（从 RiskOracle 事件日志重建，仅 XRP 上链）
+// On-chain history source of truth (rebuilt from RiskOracle event logs; only XRP is pushed on-chain)
 let ocHistCache = { at: 0, data: [] };
 app.get("/api/onchain-history", async (req, res) => {
   try {
@@ -184,7 +184,7 @@ app.post("/api/risk/refresh", (req, res) => {
   res.json({ triggered: true });
 });
 
-// 杀手锏：新闻分析（针对指定资产，默认 XRP）
+// Killer feature: news analysis (for a given asset, defaults to XRP)
 app.post("/api/news", async (req, res) => {
   try {
     const news = (req.body && req.body.news) || "";
@@ -199,7 +199,7 @@ app.post("/api/news", async (req, res) => {
 const PORT = process.env.PORT || 8078;
 app.listen(PORT, () => {
   console.log(`AI Risk Oracle API on http://localhost:${PORT} · assets: ${ASSETS.join(", ")}`);
-  // 从磁盘历史恢复各资产缓存（重启秒有数据）
+  // Restore each asset's cache from on-disk history (data available instantly after a restart)
   for (const sym of ASSETS) {
     const hist = riskHistory[sym] || [];
     if (hist.length) {
@@ -216,5 +216,5 @@ app.listen(PORT, () => {
   }
   console.log(`[history] restored: ${ASSETS.map(a => a + ':' + (riskHistory[a]?.length || 0)).join(', ')}`);
   refreshAll();
-  setInterval(refreshAll, 6 * 60 * 1000); // 每6分钟刷新全部资产
+  setInterval(refreshAll, 6 * 60 * 1000); // refresh all assets every 6 minutes
 });

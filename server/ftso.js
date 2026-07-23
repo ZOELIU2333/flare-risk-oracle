@@ -1,8 +1,8 @@
-// 读取 Flare FTSO 多资产实时价格（用 ethers 连 Coston2，走 RPC 池自动降级）
+// Read Flare FTSO real-time prices for multiple assets (ethers connected to Coston2, with automatic RPC-pool fallback)
 const { ethers } = require("ethers");
 const { readCall } = require("./rpc-pool");
 
-const REGISTRY = "0xaD67FE66660Fb8dFE9d6b1b4240d8650e30F6019"; // 全网通用
+const REGISTRY = "0xaD67FE66660Fb8dFE9d6b1b4240d8650e30F6019"; // universal across networks
 const FEEDS = {
   XRP: "0x015852502f55534400000000000000000000000000",
   BTC: "0x014254432f55534400000000000000000000000000",
@@ -22,19 +22,19 @@ async function readFeed(id) {
   });
 }
 
-// 单资产价格（symbol: XRP/BTC/ETH）
+// Single-asset price (symbol: XRP/BTC/ETH)
 async function getPrice(symbol) {
   const id = FEEDS[symbol];
   if (!id) throw new Error("unsupported asset: " + symbol);
   return readFeed(id);
 }
 
-// 兼容旧接口
+// Backward-compatible legacy interface
 async function getXrpUsd() {
   return getPrice("XRP");
 }
 
-// 全市场：XRP + BTC + ETH（跨资产传染上下文）
+// Whole market: XRP + BTC + ETH (cross-asset contagion context)
 async function getMarketContext() {
   const [xrp, btc, eth] = await Promise.all([getPrice("XRP"), getPrice("BTC"), getPrice("ETH")]);
   return { XRP: xrp.price, BTC: btc.price, ETH: eth.price, xrp: xrp.price, btc: btc.price, eth: eth.price, timestamp: xrp.timestamp };

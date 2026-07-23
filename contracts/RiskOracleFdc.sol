@@ -5,8 +5,8 @@ import { ContractRegistry } from "@flarenetwork/flare-periphery-contracts/coston
 import { IWeb2Json } from "@flarenetwork/flare-periphery-contracts/coston2/IWeb2Json.sol";
 import { IRiskOracle, RiskData } from "./IRiskOracle.sol";
 
-// RiskData 定义统一在 IRiskOracle.sol；字段(score/reason/timestamp)与
-// 脚本里 abiSignature 的 components 顺序/类型完全一致。
+// RiskData is defined centrally in IRiskOracle.sol; its fields (score/reason/timestamp)
+// match the order and types of the abiSignature components used in the scripts exactly.
 
 contract RiskOracleFdc is IRiskOracle {
     address public owner;
@@ -26,8 +26,8 @@ contract RiskOracleFdc is IRiskOracle {
         history.push(dto);
     }
 
-    // 仅演示用：路演时快速切换风险值以演示消费方反应；
-    // 真实数据始终走 addRisk(FDC proof) 通道。
+    // For demonstration only: lets the presenter quickly toggle the risk value on stage to
+    // show how consumers react; real data always flows through the addRisk(FDC proof) path.
     function setRiskForDemo(uint256 _score, string calldata _reason) external {
         require(msg.sender == owner, "not owner");
         RiskData memory dto = RiskData({ score: _score, reason: _reason, timestamp: block.timestamp });
@@ -43,7 +43,7 @@ contract RiskOracleFdc is IRiskOracle {
         return history.length;
     }
 
-    // 让 ABI 里包含 RiskData 结构，脚本可从 artifact 读取其类型
+    // Ensures the ABI includes the RiskData struct so scripts can read its type from the artifact
     function abiSignatureHack(RiskData calldata dto) public pure {}
 
     function isWeb2JsonProofValid(IWeb2Json.Proof calldata _proof) private view returns (bool) {

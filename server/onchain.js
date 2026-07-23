@@ -1,12 +1,12 @@
-// 后端自动上链：把多 AI 风险分 push 到固定的 RiskOracle 合约
-// 用 owner 直接写(setRisk)，快(一笔交易)、地址固定、真自动。
-// FDC 完整 attestation 已在 M2/M3 验证可行，此处为"预言机持续自动运转"的轻量通道。
+// Backend auto on-chain push: push the multi-AI risk score to a fixed RiskOracle contract.
+// Uses the owner to write directly (setRisk) — fast (single transaction), fixed address, truly automatic.
+// The full FDC attestation was already validated as feasible in M2/M3; this is a lightweight channel for keeping the oracle running continuously and automatically.
 require("dotenv").config();
 const { ethers } = require("ethers");
 const { logsCall } = require("./rpc-pool");
 
 const RPC = "https://coston2-api.flare.network/ext/C/rpc";
-// RiskOracle 合约（owner = 主工程测试钱包 0x90d0..., 有 setRisk/getRisk）
+// RiskOracle contract (owner = main project test wallet 0x90d0..., exposes setRisk/getRisk)
 const CONTRACT = "0x29D2567bbD5979426fadAdB8991C10dE267f4304";
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
@@ -16,13 +16,13 @@ const ABI = [
   "event RiskUpdated(uint256 score, string reason, uint256 timestamp)",
 ];
 
-// 是否配置了私钥（未配置则自动上链静默跳过，不影响 AI 风险分析主流程）
+// Whether a private key is configured (if not, auto on-chain push is silently skipped without affecting the main AI risk-analysis flow)
 const onchainEnabled = !!PRIVATE_KEY;
 
 let wallet, contract;
 function init() {
   if (contract) return contract;
-  if (!PRIVATE_KEY) throw new Error("PRIVATE_KEY 未配置，自动上链已跳过");
+  if (!PRIVATE_KEY) throw new Error("PRIVATE_KEY not configured, auto on-chain push skipped");
   const provider = new ethers.JsonRpcProvider(RPC);
   const pk = PRIVATE_KEY.startsWith("0x") ? PRIVATE_KEY : "0x" + PRIVATE_KEY;
   wallet = new ethers.Wallet(pk, provider);
@@ -44,7 +44,7 @@ async function readOnchainRisk() {
   return { score: Number(r.score), reason: r.reason, timestamp: Number(r.updatedAt) };
 }
 
-// 从链上 RiskUpdated 事件日志重建历史（链上不可篡改的真相源）
+// Rebuild history from on-chain RiskUpdated event logs (the tamper-proof on-chain source of truth)
 async function readOnchainHistory() {
   return logsCall(async (provider) => {
     const c = new ethers.Contract(CONTRACT, ABI, provider);
