@@ -20,7 +20,7 @@ secrets, API keys, or other private information here.
 | Priority | Competition | Status | Key date | Current focus |
 |---|---|---|---|---|
 | P0 | [Flare Summer Signal](https://dorahacks.io/hackathon/flaresummersignal/detail) | `BLOCKED` | Submission: 2026-08-15 03:59 CST | Complete DoraHacks contact step after Telegram registration |
-| P0 | [HackerNoon Proof of Usefulness](https://proofofusefulness.com/) | `IN PROGRESS` | Rolling deadline: 2026-08-10 | Finish contact step, submit, and generate the PoU report |
+| P0 | [HackerNoon Proof of Usefulness](https://proofofusefulness.com/) | `SUBMITTED` | Rolling deadline: 2026-08-10 | Review the +65 report and publish the HackerNoon article |
 | P1 | [KeeperHub Agents Onchain](https://dorahacks.io/hackathon/agents-onchain/detail) | `PLANNED` | Submission: 2026-08-13 | Confirm existing-project eligibility and scope a real execution feature |
 | P1 | [ETHOnline 2026](https://ethglobal.com/events) | `PLANNED` | Event: 2026-09-04 to 2026-09-16 | Apply and confirm availability of a Continuity track |
 | P2 | [XRPL Make Waves](https://luma.com/make-waves-on-xrpl) | `PLANNED` | Program ends: 2026-09-21 | Apply with an XRPL Mainnet extension proposal |
@@ -84,11 +84,12 @@ about being in early public beta and not yet having material user traction.
 - [x] Audience, target user, and technology responses prepared.
 - [x] Traction evidence and usefulness response prepared.
 - [x] Sponsor technology selection reviewed: use `Other / Custom Stack`.
+- [x] Project submitted.
+- [x] Initial Proof of Usefulness score received: `+65`.
 
 ### Next
 
-- [ ] Complete the contact form and submit the project.
-- [ ] Save the generated Proof of Usefulness report URL and score.
+- [ ] Open the full report and save its public URL.
 - [ ] Publish the required HackerNoon technical article.
 - [ ] Recruit 5-10 independent testers.
 - [ ] Record verifiable feedback, analysis runs, API calls, and repeat usage.
@@ -186,3 +187,4 @@ would not be competitive.
 | 2026-07-23 | Portfolio | Created the central tracker and recorded five selected competitions. |
 | 2026-07-23 | Flare Summer Signal | Product, README, video, contracts, and FDC proof ready; final contact step blocked by Telegram registration. |
 | 2026-07-23 | HackerNoon Proof of Usefulness | Submission form progressed to the final contact step. |
+| 2026-07-23 | HackerNoon Proof of Usefulness | Project submitted with an initial Proof of Usefulness score of +65; no sponsor technology prize pools selected. |
